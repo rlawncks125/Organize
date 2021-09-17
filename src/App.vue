@@ -1,7 +1,9 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/vue2">Vue2</router-link>
+    <p>공부 하자 !!!!!!!</p>
+    <router-link to="/TypeSCript">TypeSCript</router-link> |
+    <router-link to="/vue2">Vue2</router-link> |
+    <router-link to="/vue3">Vue3</router-link>
   </div>
   <router-view />
 </template>

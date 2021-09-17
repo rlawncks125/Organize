@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
+import TypeSCript from "../views/TypeScript.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: "/TypeSCript",
+    name: "TypeSCript",
+    component: TypeSCript,
   },
   // {
   //   path: "/about",
@@ -19,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/vue2",
     name: "Vue2",
     component: () => import("../views/Vue2_Structure.vue"),
+  },
+  {
+    path: "/vue3",
+    name: "Vue3",
+    component: () => import("../views/Vue3_Composition.vue"),
   },
 ];
 

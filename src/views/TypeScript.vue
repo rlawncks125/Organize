@@ -14,12 +14,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, toRef } from "vue";
+import { defineComponent, reactive, ref, toRefs } from "vue";
 
 export default defineComponent({
   setup() {
     const book = useBook("감지영", 84, "NODE");
-
     const successFunc = (name: string, price: number) => {
       console.log(`이름 : ${name} , 가격 : ${price}`);
     };
@@ -32,29 +31,29 @@ export default defineComponent({
 type BOOK_TITLE = "JS" | "JAVA" | "NODE";
 
 // 인터페이스 정의
-interface Iterput {
+interface IBook {
   name: string;
   price: number;
   title: BOOK_TITLE;
 }
 
 const useBook = (name: string, price: number, title: BOOK_TITLE) => {
-  const data = reactive<Iterput>({
+  const data = reactive<IBook>({
     name,
     price,
     title,
   });
 
   // 함수 파라미터로 재정의할수 있게 return값 넘기기
-  const promisFunc = (
+  function promisFunc(
     name: string,
     price: number,
     successFunc: (name: string, age: number) => void
-  ) => {
+  ) {
     setTimeout(() => {
       successFunc(name, price);
     }, 1000);
-  };
+  }
 
   // typescript 오버로딩
   // 마지막 전 함수에서 오버로딩 파리미터  정의
