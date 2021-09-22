@@ -11,7 +11,7 @@ https://v3.vuejs.org/guide/class-and-style.html#array-syntax-2
 
 ```공용
 transtion
-slot
+slot(o)
 
 
 

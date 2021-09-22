@@ -30,6 +30,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "common",
     component: () => import("../views/Vue_Common.vue"),
   },
+  {
+    path: "/TA",
+    name: "Transitions_Animation",
+    component: () => import("../views/Transitions_Animation.vue"),
+  },
 ];
 
 const router = createRouter({

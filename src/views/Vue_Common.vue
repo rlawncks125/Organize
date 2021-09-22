@@ -66,8 +66,8 @@
       <p>v-for</p>
       <p>v-on = @</p>
       <p>v-bind = :</p>
+      <p>v-slot = #</p>
       <p>v-model</p>
-      <p>v-slot</p>
       <p>v-pre</p>
       <p>v-cloak</p>
       <p>v-once</p>

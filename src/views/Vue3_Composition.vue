@@ -70,8 +70,8 @@ export default defineComponent({
   },
 });
 
+// 반응성 API ( Reactive , Ref , Computed , Watch )
 // Reactive / Ref Ts
-
 const ReactiveTooRef = (props: any) => {
   // reactive 객체의 반응형 복사본을 반환
   const state = reactive({
