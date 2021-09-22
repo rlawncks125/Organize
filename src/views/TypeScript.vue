@@ -14,9 +14,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, toRefs } from "vue";
+import codeConvert from "@/components/codeConvert.vue";
+import { defineComponent, reactive, toRefs } from "vue";
 
 export default defineComponent({
+  components: { codeConvert },
   setup() {
     const book = useBook("감지영", 84, "NODE");
     const successFunc = (name: string, price: number) => {

@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "marked": "^3.0.4",
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.0.0-0",
+    "vue3-markdown-it": "^1.0.9",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {

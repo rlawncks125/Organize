@@ -16,30 +16,33 @@
 
     <p>특별한 속성</p>
     <div class="boxWall">
+      <!-- key -->
       <p :key="key">key : {{ key }} = VNode를 식별하기 위한 힌트로 사용</p>
+      <!-- ref -->
       <p ref="refP">
         ref = 엘리먼트나 자식 컴포넌트에대한 참조를 등록할떄 사용
       </p>
+      <!-- is -->
       <p>is = 동적 컴포넌트에 사용</p>
     </div>
+  </div>
 
-    <p>디렉티브 모음</p>
-    <div class="dre-warp">
-      <p>v-text</p>
-      <p>v-html</p>
-      <p>v-show</p>
-      <p>v-if</p>
-      <p>v-else-if</p>
-      <p>v-else</p>
-      <p>v-for</p>
-      <p>v-on = @</p>
-      <p>v-bind = :</p>
-      <p>v-model</p>
-      <p>v-slot</p>
-      <p>v-pre</p>
-      <p>v-once</p>
-      <p>v-is</p>
-    </div>
+  <p>디렉티브 모음</p>
+  <div class="dre-warp">
+    <p>v-text</p>
+    <p>v-html</p>
+    <p>v-show</p>
+    <p>v-if</p>
+    <p>v-else-if</p>
+    <p>v-else</p>
+    <p>v-for</p>
+    <p>v-on = @</p>
+    <p>v-bind = :</p>
+    <p>v-model</p>
+    <p>v-slot</p>
+    <p>v-pre</p>
+    <p>v-once</p>
+    <p>v-is</p>
   </div>
 
   <!-- tmpleate 데이터 바인딩 -->

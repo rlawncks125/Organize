@@ -25,6 +25,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "Vue3",
     component: () => import("../views/Vue3_Composition.vue"),
   },
+  {
+    path: "/common",
+    name: "common",
+    component: () => import("../views/Vue_Common.vue"),
+  },
 ];
 
 const router = createRouter({

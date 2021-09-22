@@ -2,8 +2,9 @@
   <div id="nav">
     <p>공부 하자 !!!!!!!</p>
     <router-link to="/TypeSCript">TypeSCript</router-link> |
+    <router-link to="/common">common</router-link> |
     <router-link to="/vue2">Vue2</router-link> |
-    <router-link to="/vue3">Vue3</router-link>
+    <router-link to="/vue3">Vue3</router-link> |
   </div>
   <router-view />
 </template>
