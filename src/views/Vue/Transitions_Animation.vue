@@ -118,7 +118,7 @@
 
   <!-- 목록 전환  -->
   <div style="border : 1px solid black; margin-top:2rem">
-    <h2>이동 전환 나열</h2>
+    <h2>목록 전환</h2>
     <div id="demo">
       <input v-model="query" />
       <transition-group
@@ -314,6 +314,8 @@ const 이동_나열_전환 = () => {
 };
 
 const 목록_전환 = () => {
+  const delyTime = 0.04;
+
   const state = reactive({
     query: "",
     list: [
@@ -339,7 +341,7 @@ const 목록_전환 = () => {
     gsap.to(el, {
       opacity: 1,
       height: "1.6em",
-      delay: el.dataset.index * 0.15,
+      delay: el.dataset.index * delyTime,
       onComplete: done,
     });
   };
@@ -348,7 +350,7 @@ const 목록_전환 = () => {
     gsap.to(el, {
       opacity: 0,
       height: 0,
-      delay: el.dataset.index * 0.15,
+      delay: el.dataset.index * delyTime,
       onComplete: done,
     });
   };
@@ -485,6 +487,6 @@ button {
 }
 
 .flip-list-move {
-  transition: transform 0.8s ease;
+  transition: transform 0.4s ease;
 }
 </style>

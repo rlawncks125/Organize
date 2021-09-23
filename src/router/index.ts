@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import TypeSCript from "../views/TypeScript.vue";
+import TypeSCript from "../views/Vue/TypeScript.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -18,22 +18,27 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/vue2",
     name: "Vue2",
-    component: () => import("../views/Vue2_Structure.vue"),
+    component: () => import("../views/Vue/Vue2_Structure.vue"),
   },
   {
     path: "/vue3",
     name: "Vue3",
-    component: () => import("../views/Vue3_Composition.vue"),
+    component: () => import("../views/Vue/Vue3_Composition.vue"),
   },
   {
     path: "/common",
     name: "common",
-    component: () => import("../views/Vue_Common.vue"),
+    component: () => import("../views/Vue/Vue_Common.vue"),
   },
   {
     path: "/TA",
     name: "Transitions_Animation",
-    component: () => import("../views/Transitions_Animation.vue"),
+    component: () => import("../views/Vue/Transitions_Animation.vue"),
+  },
+  {
+    path: "/vuex",
+    name: "vuex",
+    component: () => import("../views/Vue/Vuex.vue"),
   },
 ];
 

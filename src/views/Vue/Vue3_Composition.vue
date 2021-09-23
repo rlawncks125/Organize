@@ -41,7 +41,7 @@ import {
   toRef,
   toRefs,
 } from "vue";
-import { providekey as key } from "../main";
+import { providekey as key } from "../../main";
 import Vue_Child from "./Vue_Child.vue";
 
 export default defineComponent({
