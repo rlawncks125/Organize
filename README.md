@@ -28,7 +28,7 @@ ref reactive toRef toRefs (o)
 ```기타
 
 
-vuex
+vuex (o)
 
 
 HTML 기본 태그,
