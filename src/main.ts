@@ -1,6 +1,7 @@
 import { createApp, InjectionKey, provide } from "vue";
 import App from "./App.vue";
 import router from "./router";
+import componentCodeConvert from "./components/codeConvert.vue";
 import { store, key } from "./store";
 
 // provide // inject TS
@@ -13,4 +14,5 @@ createApp(App)
   .provide(key, store)
   .provide(providekey, "foo")
   .provide("stringFoo", "stringFoo")
+  .component("code-convert", componentCodeConvert)
   .mount("#app");

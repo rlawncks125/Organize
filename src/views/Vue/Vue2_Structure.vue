@@ -39,7 +39,7 @@
     <p>v-on = @</p>
     <p>v-bind = :</p>
     <p>v-model</p>
-    <p>v-slot</p>
+    <p>v-slot = #</p>
     <p>v-pre</p>
     <p>v-once</p>
     <p>v-is</p>

@@ -1,12 +1,27 @@
 <template>
   <div id="nav">
     <p>공부 하자 !!!!!!!</p>
+    <span style="font-weight: bold; color : blue">
+      VUE :
+    </span>
     <router-link to="/TypeSCript">TypeSCript</router-link> |
     <router-link to="/common">common</router-link> |
     <router-link to="/vue2">Vue2</router-link> |
     <router-link to="/vue3">Vue3</router-link> |
     <router-link to="/TA">TA</router-link> |
-    <router-link to="/vuex">vuex</router-link> |
+    <router-link to="/vuex">vuex</router-link>
+    <br />
+    <span style="font-weight: bold; color : blue">
+      HTML :
+    </span>
+    <router-link to="/tag">Tag</router-link>
+
+    <span style="font-weight: bold; color : blue; padding-left:10px;">
+      CSS :
+    </span>
+    <router-link to="/selector">선택자</router-link> |
+    <router-link to="/css">css</router-link> |
+    <router-link to="/scss">scss</router-link>
   </div>
 
   <p style="text-align: left;">counst stirng : {{ resultData }}</p>
@@ -25,7 +40,6 @@
 
 <script lang="ts">
 import { computed, defineComponent } from "@vue/runtime-core";
-
 import { countString } from "./components/countString";
 
 export default defineComponent({
@@ -33,11 +47,11 @@ export default defineComponent({
     const data = [
       "나는 초보자 FrontEnd 입니다.",
       "여기는 공부사이트입니다.",
-      "나는 나는 퉁퉁이 왜나를 싫어하나",
       "이걸 하는곳이 많아서 한번 해봤습니다.",
+      "VUE , HTML , SCSS 정리중입니다.",
     ];
     const { resultData } = countString(data, {
-      timing: 4,
+      timing: 6,
       deleteSpeed: 2,
       stopTiming: 4,
       startTimeing: 2,

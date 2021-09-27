@@ -31,8 +31,7 @@ ref reactive toRef toRefs (o)
 vuex (o)
 
 
-HTML 기본 태그,
-HTML from , video , table <-- 대충 밖에 안해서 이번에 제대로해보자
+HTML 기본 태그, ( o )
 
 
 CSS / SCSS -
@@ -40,3 +39,6 @@ css - root 변수 , media 쿼리 , 기본
 SCSS - 폴더 구조 , 상속 등등 정리,
 
 ```
+
+MY_Study에서 랜더링
+HTML from , video , table

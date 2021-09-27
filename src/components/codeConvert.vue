@@ -1,7 +1,13 @@
 <template>
   <div v-if="!viewHtml" ref="getCodeData">
-    <slot></slot>
+    <slot name="code"></slot>
   </div>
+  <h1>
+    <slot name="title"></slot>
+  </h1>
+  <p>
+    <slot name="content"></slot>
+  </p>
   <div class="code-warp" v-html="viewHtml"></div>
 </template>
 
@@ -60,6 +66,9 @@ const codeToHtmlConvert = (code: string) => {
     s = s.replaceAll("function", "<span class=co-function>function</span>");
     s = s.replaceAll("const", "<span class=co-const>const</span>");
 
+    // 설명 정리할떄 : 이전 문자 포인트 주기
+    s = explanationHighlite(s);
+
     // return `<p>${s}</p>`;
     return `${s}<br />`;
   }
@@ -71,10 +80,30 @@ export const codeProcess = (txt: string): string => {
   // slot 으로 넘기기 전에 String값으로 줄시 전처리
   return txt
     .replaceAll("\n", "/n") // \n문자열 인식이 안돼서 /n바꿔서 줄바꿈
-    .replaceAll("/t", "&nbsp;&nbsp;&nbsp;&nbsp;") // \n문자열 인식이 안돼서 /n바꿔서 주바꿈
+    .replaceAll("/tt", "&nbsp;&nbsp;&nbsp;&nbsp;") // \n문자열 인식이 안돼서 /n바꿔서 주바꿈
     .replaceAll("<", "&lt")
     .replaceAll(">", "&gt");
 };
+
+// 설명 정리할때 : 이전 문자 포인트 주기
+function explanationHighlite(text: string): string {
+  if (text.includes(":")) {
+    // 선택자 가상 클래스 때문에 넣음
+    if (text.includes("=") && text.indexOf(":") === 0) {
+      const splits = text.split("=");
+
+      const a = `<span class=text-highlite>${splits[0]}</span>`;
+
+      return `${a}=${splits[1]}`;
+    } else {
+      const splits = text.split(":");
+
+      const a = `<span class=text-highlite>${splits[0]}</span>`;
+
+      return `${a}:${splits[1]}`;
+    }
+  } else return text;
+}
 </script>
 
 <style>
@@ -100,5 +129,8 @@ export const codeProcess = (txt: string): string => {
 .fn-start,
 .fn-end {
   color: antiquewhite;
+}
+.text-highlite {
+  color: aquamarine;
 }
 </style>

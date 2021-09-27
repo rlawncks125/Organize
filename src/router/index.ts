@@ -40,6 +40,26 @@ const routes: Array<RouteRecordRaw> = [
     name: "vuex",
     component: () => import("../views/Vue/Vuex.vue"),
   },
+  {
+    path: "/tag",
+    name: "tag",
+    component: () => import("../views/HTML/Tag.vue"),
+  },
+  {
+    path: "/selector",
+    name: "selector",
+    component: () => import("../views/CSS/선택자.vue"),
+  },
+  {
+    path: "/css",
+    name: "css",
+    component: () => import("../views/CSS/CSS.vue"),
+  },
+  {
+    path: "/scss",
+    name: "scss",
+    component: () => import("../views/CSS/SCSS.vue"),
+  },
 ];
 
 const router = createRouter({
