@@ -66,6 +66,15 @@ const codeToHtmlConvert = (code: string) => {
 
   return { resultText };
 };
+
+export const codeProcess = (txt: string): string => {
+  // slot 으로 넘기기 전에 String값으로 줄시 전처리
+  return txt
+    .replaceAll("\n", "/n") // \n문자열 인식이 안돼서 /n바꿔서 줄바꿈
+    .replaceAll("/t", "&nbsp;&nbsp;&nbsp;&nbsp;") // \n문자열 인식이 안돼서 /n바꿔서 주바꿈
+    .replaceAll("<", "&lt")
+    .replaceAll(">", "&gt");
+};
 </script>
 
 <style>
