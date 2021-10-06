@@ -36,9 +36,6 @@ HTML 기본 태그, ( o )
 
 --- 해야할거
 
-codeConvert 깔쌈하게 만들기
-(js , html ,css , 설명 , 타입에맞게 따로따로 가능하게)
-ex) codeprocess(type , 'code'); // 구조바꿔야할듯 생각하자
 
 
 CSS / SCSS -

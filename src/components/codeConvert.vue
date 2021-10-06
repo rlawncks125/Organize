@@ -129,16 +129,19 @@ const codeToHtmlConvert = (code: string) => {
 
     // css Class 처리
     if (text.slice(0, 1) === ".") {
+      // class
       return `${tabString}<span class=co-css-class>${text.slice(
         0,
         text.length - 1
       )}</span> {<br />`;
     } else if (text.slice(0, 1) === "#") {
+      // id
       return `${tabString}<span class=co-css-id>${text.slice(
         0,
         text.length - 1
       )}</span> {<br />`;
     } else if (text.split("{").length === 2) {
+      // tag
       enum tagCheck {
         "div",
         "p",
@@ -150,7 +153,7 @@ const codeToHtmlConvert = (code: string) => {
       }
       const tagCss = text.split("{")[0].trim();
       let B_tagCss = false;
-      for (const value in tagCheck) {
+      for (let value in tagCheck) {
         value === tagCss && (B_tagCss = true);
       }
       if (B_tagCss) {
@@ -164,6 +167,10 @@ const codeToHtmlConvert = (code: string) => {
     s = s.replaceAll("({", "( <span class=fn-start>{</span>");
     s = s.replaceAll("})", "<span class=fn-start>}</span> )");
 
+    // 설명 정리할떄 : 이전 문자 포인트 주기
+
+    s = explanationHighlite(s);
+
     // js 처리 아직안함
     // 귀찮으므로 우선 replace로 대체
     s = s.replaceAll("function", "<span class=co-function>function</span>");
@@ -173,9 +180,6 @@ const codeToHtmlConvert = (code: string) => {
     s = s.replaceAll("for", "<span class=co-for>for</span>");
     s = s.replaceAll("return", "<span class=co-return>return</span>");
     s = s.replaceAll("=&gt", "<span class=co-arrayFunc>=&gt</span>");
-
-    // 설명 정리할떄 : 이전 문자 포인트 주기
-    s = explanationHighlite(s);
 
     // return `<p>${s}</p>`;
     return `${tabString}${s}<br />`;
