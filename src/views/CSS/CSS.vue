@@ -217,17 +217,17 @@ export default defineComponent({
   content: "media";
 
   @media (max-width: 400px) {
-    content: "mobile";
+    content: "s";
     color: red;
   }
 
   @media (min-width: 400px) {
-    content: "doublephon";
+    content: "sm";
     color: goldenrod;
   }
 
   @media (min-width: 700px) {
-    content: "table";
+    content: "md";
     color: green;
   }
 }

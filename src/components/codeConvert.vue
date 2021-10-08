@@ -59,6 +59,22 @@ const codeToHtmlConvert = (code: string) => {
       return `${tabString}<span class=footnote>${text}</span><br />`;
     }
 
+    // 설명 처리
+    if (text.slice(0, 4) === "----") {
+      return `${tabString}<span class=co-설명>${text.slice(
+        4,
+        text.length
+      )}</span><br />`;
+    }
+
+    // ex) 처리
+    if (text.slice(0, 3) === "ex)") {
+      return `${tabString}<span class=co-ex>ex)</span>${text.slice(
+        3,
+        text.length
+      )}<br />`;
+    }
+
     //HTML 처리
     if (
       text.indexOf("&lt") === 0 &&
@@ -225,6 +241,12 @@ function explanationHighlite(text: string): string {
   text-align: left;
   margin: 2px;
   padding: 10px 20px;
+}
+.co-ex {
+  color: red;
+}
+.co-설명 {
+  color: goldenrod;
 }
 .footnote {
   color: green;
