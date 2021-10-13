@@ -74,6 +74,7 @@ export default defineComponent({
 // Reactive / Ref Ts
 const ReactiveTooRef = (props: any) => {
   // reactive 객체의 반응형 복사본을 반환
+  // Array , Object 타입에 유용
   const state = reactive({
     count: 0,
     choko: 0,

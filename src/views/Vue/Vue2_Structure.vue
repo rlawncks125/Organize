@@ -36,8 +36,8 @@
     <p>v-else-if</p>
     <p>v-else</p>
     <p>v-for</p>
-    <p>v-on = @</p>
-    <p>v-bind = :</p>
+    <p>v-on(HTML이벤트 접근) = @</p>
+    <p>v-bind(HTML속성 접근) = :</p>
     <p>v-model</p>
     <p>v-slot = #</p>
     <p>v-pre</p>

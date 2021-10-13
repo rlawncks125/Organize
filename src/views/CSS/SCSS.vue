@@ -253,10 +253,10 @@ export default defineComponent({
       `),
       재활용: codeProcess(`
       정의 : 
-      @minxin 믹스인 이름;
-      @minxin 믹스인 이름($매개변수);
-      @minxin 믹스인 이름($매개변수 : 기본값);
-      @minxin 믹스인 이름($매개변수 , $매개변수_가변인수...);
+      @mixin 믹스인 이름;
+      @mixin 믹스인 이름($매개변수);
+      @mixin 믹스인 이름($매개변수 : 기본값);
+      @mixin 믹스인 이름($매개변수 , $매개변수_가변인수...);
             
       사용 :
       @include 믹스인 이름;

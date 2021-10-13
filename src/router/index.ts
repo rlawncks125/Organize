@@ -60,6 +60,65 @@ const routes: Array<RouteRecordRaw> = [
     name: "scss",
     component: () => import("../views/CSS/SCSS.vue"),
   },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("../views/Router/login.vue"),
+  },
+  {
+    path: "/user/:id",
+    name: "user",
+    component: () => import("../views/Router/User.vue"),
+    children: [
+      {
+        path: "profile",
+        name: "user/profile",
+        component: () =>
+          import(
+            /* webpackChunkName: "user" */ "../views/Router/User/Profile.vue"
+          ),
+      },
+      {
+        path: "dash",
+        name: "user/dash",
+        component: () => import("../views/Router/User/dashbord.vue"),
+      },
+      {
+        path: "dash/:dsc",
+        name: "dash/params",
+        component: () =>
+          import(
+            /* webpackChunkName: "user" */ "../views/Router/User/dashbord.vue"
+          ),
+      },
+      {
+        path: "dependency",
+        name: "dependency",
+        component: () => import("../views/Router/User/함수모드.vue"),
+        props: (route) => ({
+          id: route.params.id,
+          query: route.query.q,
+        }),
+      },
+      {
+        path: "dependency/:param",
+        name: "dependency/param",
+        component: () => import("../views/Router/User/함수모드.vue"),
+        props: (route) => ({
+          id: route.params.id,
+          param: route.params.param,
+          query: { q: route.query.q, u: route.query.u },
+        }),
+      },
+      {
+        path: "",
+        component: () =>
+          import(
+            /* webpackChunkName: "user" */ "../views/Router/User/userHome.vue"
+          ),
+      },
+    ],
+  },
 ];
 
 const router = createRouter({
