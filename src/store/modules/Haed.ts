@@ -55,7 +55,7 @@ const actions: ActionTree<IState, rootState> = {
   actionsCahnge: async ({ commit }, payload: IactionsParms) => {
     const commitCall: mutationsCallName = "cahngeJob";
     const parms: ImutationsParms = { job: "게스트" };
-    await setTimeout(() => {
+    setTimeout(() => {
       console.log(`actions payload : ${payload}`);
       commit(commitCall, parms);
     }, 1000);

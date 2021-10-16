@@ -119,6 +119,11 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+  {
+    path: "/팝업",
+    name: "팝업",
+    component: () => import("@/views/기타해본거/팝업.vue"),
+  },
 ];
 
 const router = createRouter({

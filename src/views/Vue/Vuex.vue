@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, reactive, ref } from "vue";
 import { useStore } from "../../store/index";
 import { gettersModuleA, gettersHead } from "../../store/getters";
 import { mutationsModuleA, mutationsHead } from "../../store/mutations";
@@ -35,6 +35,7 @@ export default defineComponent({
     );
 
     mutationsModuleA("changeName", { name: "setUpMustaion" });
+
     const changeName = () => {
       mutationsModuleA("changeName", { name: reName.value }, store);
     };

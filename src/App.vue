@@ -22,6 +22,11 @@
     <router-link to="/selector">선택자</router-link> |
     <router-link to="/css">css</router-link> |
     <router-link to="/scss">scss</router-link>
+    <br />
+    <span style="font-weight: bold; color : blue; padding-left:10px;">
+      기타 :
+    </span>
+    <router-link to="/팝업">팝업</router-link>
   </div>
 
   <p style="text-align: left;">counst stirng : {{ resultData }}</p>
@@ -64,12 +69,11 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif, Georgia, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 

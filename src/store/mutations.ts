@@ -16,7 +16,7 @@ export const mutationsModuleA = (
 ): any => {
   const store = FuncCallStore || useStore();
 
-  //   console.log(store, `moduleA/${callName}`);
+  console.log(store, `moduleA/${callName}`);
   //
   return store.commit(`moduleA/${callName}`, parms);
 };
