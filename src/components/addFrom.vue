@@ -4,10 +4,14 @@
       <legend class="close" @click="addBtn = false">
         닫기
       </legend>
+      <!-- 이미지 파일 드래그 on drop 할 자리 -->
       <label
         draggable="true"
         @drop="fileDrop"
+        @dragover="dragCalss = 'file-warp-over'"
+        @dragleave="dragCalss = ''"
         class="files-line"
+        :class="[dragCalss]"
         for="file-warp"
       >
         <strong>올리 이미지들을 여기에 끌어다 올리세요.</strong>
@@ -20,21 +24,21 @@
         @change.prevent="fileCahnge"
         multiple
       />
-
+      <!-- 이미지 출력 -->
       <div class="images-warp">
         <div v-for="(item, index) in files" :key="index" class="images">
           <img v-if="item.type === 'image'" :src="item.data" />
           <button @click="deleteImage(index)">X</button>
         </div>
       </div>
-
+      <!-- 입력 -->
       <label for="name">이름 : </label>
       <input type="text" name="name" v-model="name" /><br />
       <label for="dsc">내용 : </label>
       <input type="text" name="dsc" v-model="dsc" /><br />
-
       <button @click="add" class="add">ADD</button>
     </fieldset>
+    <!-- addFrom Open -->
     <div v-else-if="!addBtn">
       <span>추가 하시겠습니까 ? </span>
       <button class="open" @click="addBtn = true">
@@ -63,6 +67,7 @@ export default defineComponent({
       dsc: "",
       files: [] as Array<IfilesObject>,
       addBtn: false,
+      dragCalss: "",
       add: () => {
         // imageFile url 작업
         emit("addItem", {
@@ -195,5 +200,9 @@ input[type="file"] {
       text-align: center;
     }
   }
+}
+
+.file-warp-over {
+  color: red;
 }
 </style>

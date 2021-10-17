@@ -1,32 +1,52 @@
-import { Store } from "vuex";
-import { State, useStore } from "./index";
 import {
-  mutationsCallType as moduleACallName,
-  MutationsPrams as moduleAParms,
-} from "./modules/moduleA";
+  IState as BodyState,
+  mutationsParms as BodyMutationsParms,
+} from "@/store/modules/Body";
 import {
-  mutationsCallName as HeadCallName,
-  ImutationsParms as HeadParms,
-} from "./modules/Haed";
+  IState as HeadState,
+  mutationsParms as HaedMutationsParms,
+} from "@/store/modules/Haed";
 
-export const mutationsModuleA = (
-  callName: moduleACallName,
-  parms?: moduleAParms,
-  FuncCallStore?: Store<State>
-): any => {
-  const store = FuncCallStore || useStore();
+// Body
+export enum BodyMutationTypes {
+  SET_BODY_NAME = "SET_BODY_NAME",
+}
 
-  console.log(store, `moduleA/${callName}`);
-  //
-  return store.commit(`moduleA/${callName}`, parms);
+export type BodyMutations = {
+  [BodyMutationTypes.SET_BODY_NAME](
+    state: BodyState,
+    payload: BodyMutationsParms
+  ): void;
 };
 
-export const mutationsHead = (
-  callName: HeadCallName,
-  parms?: HeadParms,
-  FuncCallStore?: Store<State>
-) => {
-  const store = FuncCallStore || useStore();
+// Head
+export enum HeadMuationsTypes {
+  SET_HAED_NAME = "SET_HAED_NAME",
+  SET_HAED_AGE = "SET_HAED_AGE",
+}
 
-  return store.commit(`Head/${callName}`, parms);
+export type HeadMutations = {
+  [HeadMuationsTypes.SET_HAED_NAME](
+    state: HeadState,
+    name: HaedMutationsParms
+  ): void;
+  [HeadMuationsTypes.SET_HAED_AGE](
+    state: HeadState,
+    age: HaedMutationsParms
+  ): void;
+};
+
+// base
+import { IState as baseState } from "@/store/modules/base";
+import { mutationsParms as baseMuationsParms } from "@/store/modules/base";
+
+export enum BaseMuationsTypes {
+  MUTATIONS_BASE = "MUTATIONS_BASE",
+}
+
+export type BaseMutations = {
+  [BaseMuationsTypes.MUTATIONS_BASE](
+    state: baseState,
+    payload: baseMuationsParms
+  ): void;
 };

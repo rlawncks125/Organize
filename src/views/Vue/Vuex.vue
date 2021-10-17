@@ -1,73 +1,46 @@
 <template>
   <div>Vuex</div>
 
-  {{ getterModuleAName }}
-  <label for="rename"></label>
-  <input type="text" id="rename" v-model="reName" />
-  <button @click="changeName">바꾸기</button>
+  <br />
 
-  <p>---------------------------------</p>
+  <input type="text" v-model="name" />
+  <button @click="nameUpdate">갱신</button>
   <br />
-  <!--  -->
-  <label for="addName"></label>
-  <input type="text" id="addName" v-model="addJobe" />
-  <button @click="jobCahnge">추가</button>
-  <button @click="jobActionsChange">actions호출</button>
+  name : {{ bodyUser.name }}
   <br />
-  {{ resultAddName }}
+  age : {{ bodyUser.age }}
+  <br />
+  HeadName : {{ HeadName }}
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive, ref } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import { useStore } from "../../store/index";
-import { gettersModuleA, gettersHead } from "../../store/getters";
-import { mutationsModuleA, mutationsHead } from "../../store/mutations";
-import { actionsHead } from "../../store/actions";
+import { BodyGettersTypes, HeadGettersTypes } from "@/store/getters";
+import { BodyActionsTypes, HeadActionsTypes } from "@/store/actions";
+import { Body } from "@/store/modules/Body";
 
 export default defineComponent({
   setup() {
     const store = useStore();
-
-    const reName = ref<string>();
-
-    const getterModuleAName = computed(() =>
-      gettersModuleA("addName", { name: "추가" })
+    const bodyUser = computed(
+      () => store.getters[BodyGettersTypes.GET_BODY_STATE]
     );
-
-    mutationsModuleA("changeName", { name: "setUpMustaion" });
-
-    const changeName = () => {
-      mutationsModuleA("changeName", { name: reName.value }, store);
-    };
-
-    const addJobe = ref<string>();
-    const resultAddName = computed(() =>
-      gettersHead("addName", { name: "추가값" })
+    const HeadName = computed(() =>
+      store.getters[HeadGettersTypes.GET_NAME_ADD_PARMS]("조조")
     );
+    const name = ref<string>();
 
-    const jobCahnge = () => {
-      mutationsHead("cahngeJob", { job: addJobe.value }, store);
-    };
-
-    const jobActionsChange = () => {
-      actionsHead(
-        "actionsCahnge",
-        {
-          parms: "parms값 넘겨봄니다",
-        },
-        store
+    const nameUpdate = () => {
+      // store.commit(BodyMutationTypes.SET_BODY_NAME, name.value);
+      // store.commit(HeadMuationsTypes.SET_HAED_NAME, { name: name.value });
+      store.dispatch(
+        BodyActionsTypes.acitons_basic,
+        new Body().actions({ name: name.value })
       );
     };
 
-    return {
-      getterModuleAName,
-      reName,
-      changeName,
-      addJobe,
-      resultAddName,
-      jobCahnge,
-      jobActionsChange,
-    };
+    return { bodyUser, name, nameUpdate, HeadName };
   },
 });
 </script>

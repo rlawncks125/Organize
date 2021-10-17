@@ -1,29 +1,37 @@
-import { useStore } from "./index";
-import {
-  gettersCallType as moduleACall,
-  gettersPrams as moduleAParms,
-} from "./modules/moduleA";
-import {
-  gettersCallName as HeadCallName,
-  IgettersPrams as HeadParms,
-} from "./modules/Haed";
+import { IState as BodyState } from "@/store/modules/Body";
+import { IState as HeadState } from "@/store/modules/Haed";
+// Body
+export enum BodyGettersTypes {
+  GET_BODY_STATE = "GET_BODY_STATE",
+}
 
-// ModuleA
-export const gettersModuleA = (
-  callName: moduleACall,
-  parms?: moduleAParms
-): any => {
-  const store = useStore();
-  console.log(parms);
-
-  if (parms) return store.getters[`moduleA/${callName}`](parms);
-  else return store.getters[`moduleA/${callName}`];
+export type BodyGetters = {
+  [BodyGettersTypes.GET_BODY_STATE](
+    state: BodyState
+  ): { name: string; age: number };
 };
 
 // Head
-export const gettersHead = (callName: HeadCallName, parms?: HeadParms): any => {
-  const store = useStore();
+export enum HeadGettersTypes {
+  GET_NAME_ADD_PARMS = "GET_NAME_ADD_PARMS",
+}
 
-  if (parms) return store.getters[`Head/${callName}`](parms);
-  else return store.getters[`Head/${callName}`];
+export type HeadGetters = {
+  [HeadGettersTypes.GET_NAME_ADD_PARMS](
+    state: HeadState
+  ): (addName: string) => string;
+};
+
+// base
+import { IState as baseState } from "@/store/modules/base";
+import { gettersParms as baseGettersParms } from "@/store/modules/base";
+
+export enum BaseGettersTypes {
+  GETTERS_BASE = "GETTERS_BASE",
+}
+
+export type BaseGetters = {
+  [BaseGettersTypes.GETTERS_BASE](
+    state: baseState
+  ): (parms: baseGettersParms) => void;
 };

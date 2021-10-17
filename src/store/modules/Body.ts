@@ -6,9 +6,9 @@ import {
   MutationTree,
 } from "vuex";
 import { State as rootState } from "../index";
-import { HeadMutations, HeadMuationsTypes } from "@/store/mutations";
-import { HeadGetters, HeadGettersTypes } from "@/store/getters";
-import { HeadActions, HeadActionsTypes } from "../actions";
+import { BodyMutations, BodyMutationTypes } from "@/store/mutations";
+import { BodyGetters, BodyGettersTypes } from "@/store/getters";
+import { BodyActions, BodyActionsTypes } from "@/store/actions";
 
 export interface IState {
   name: string;
@@ -20,40 +20,36 @@ const state: IState = {
   age: 0,
 };
 
-const getters: GetterTree<IState, rootState> & HeadGetters = {
-  [HeadGettersTypes.GET_NAME_ADD_PARMS]: (state: IState) => (
-    addName: string
-  ) => {
-    return `${state.name} ${addName}`;
+const getters: GetterTree<IState, rootState> & BodyGetters = {
+  [BodyGettersTypes.GET_BODY_STATE]: (state: IState) => {
+    return {
+      name: state.name,
+      age: +state.age,
+    };
   },
 };
 
-const mutations: MutationTree<IState> & HeadMutations = {
-  [HeadMuationsTypes.SET_HAED_NAME]: (
+const mutations: MutationTree<IState> & BodyMutations = {
+  [BodyMutationTypes.SET_BODY_NAME]: (
     state: IState,
     { name }: mutationsParms
   ) => {
     name && (state.name = name);
   },
-  [HeadMuationsTypes.SET_HAED_AGE]: (
-    state: IState,
-    { age }: mutationsParms
-  ) => {
-    age && (state.age = age);
-  },
 };
 
-const actions: ActionTree<IState, rootState> & HeadActions = {
-  [HeadActionsTypes.HEAD_ACTIONS_BASIC]: (
+const actions: ActionTree<IState, rootState> & BodyActions = {
+  [BodyActionsTypes.acitons_basic]: (
     { commit }: ActionContext<IState, rootState>,
     { name }: actionsParms
   ) => {
-    commit(HeadMuationsTypes.SET_HAED_NAME, { name });
+    const setBodyName: mutationsParms = { name };
+    commit(BodyMutationTypes.SET_BODY_NAME, setBodyName);
   },
 };
 
 export const module: Module<IState, rootState> = {
-  // namespaced: true,
+  //   namespaced: true,
   state,
   getters,
   mutations,
@@ -61,7 +57,8 @@ export const module: Module<IState, rootState> = {
   modules: {},
 };
 
-//
+// 클래스로 파라미터 받는거 만들어봤는데 흠...
+// 편한거 같기도하고 아닌거같기도하고
 export interface mutationsParms {
   name?: string;
   age?: number;
@@ -73,7 +70,7 @@ export interface actionsParms {
   name?: string;
 }
 
-export class Haed {
+export class Body {
   static _mutations: mutationsParms = {
     age: 0,
     name: "",
@@ -86,17 +83,17 @@ export class Haed {
   };
 
   mutations(parms: mutationsParms) {
-    Haed._mutations = parms;
+    Body._mutations = parms;
 
-    return Haed._mutations;
+    return Body._mutations;
   }
   getters(parms: gettersParms) {
-    Haed._getters = parms;
+    Body._getters = parms;
 
-    return Haed._getters;
+    return Body._getters;
   }
   actions(parms: actionsParms) {
-    Haed._actions = parms;
-    return Haed._actions;
+    Body._actions = parms;
+    return Body._actions;
   }
 }
