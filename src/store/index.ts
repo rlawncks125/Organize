@@ -2,7 +2,7 @@ import { InjectionKey } from "@vue/runtime-core";
 import { createStore, Store, useStore as baseUseStore } from "vuex";
 import { module as Body, IState as BodyState } from "@/store/modules/Body";
 import { module as Haed, IState as HeadState } from "@/store/modules/Haed";
-import { module as Base, IState as baseState } from "@/store/modules/base";
+import Base, { IState as baseState } from "@/store/modules/base";
 
 export interface State {
   token: string;

@@ -69,6 +69,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/user/:id",
     name: "user",
     component: () => import("../views/Router/User.vue"),
+    meta: { authUser: true },
     children: [
       {
         path: "profile",
@@ -123,6 +124,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/팝업",
     name: "팝업",
     component: () => import("@/views/기타해본거/팝업.vue"),
+  },
+  {
+    path: "/함수리턴",
+    name: "함수리턴",
+    component: () => import("@/views/기타해본거/함수리턴값.vue"),
   },
 ];
 

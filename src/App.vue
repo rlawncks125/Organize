@@ -26,7 +26,8 @@
     <span style="font-weight: bold; color : blue; padding-left:10px;">
       기타 :
     </span>
-    <router-link to="/팝업">팝업</router-link>
+    <router-link to="/팝업">팝업</router-link> |
+    <router-link to="/함수리턴">함수리턴</router-link>
   </div>
 
   <p style="text-align: left;">counst stirng : {{ resultData }}</p>
@@ -44,7 +45,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "@vue/runtime-core";
+import { computed, defineComponent, watch } from "@vue/runtime-core";
+import { useRoute } from "vue-router";
 import { countString } from "./components/countString";
 
 export default defineComponent({
@@ -63,6 +65,13 @@ export default defineComponent({
     });
 
     const splits = computed(() => resultData.value.split(""));
+
+    const route = useRoute();
+    watch(route, () => {
+      const authUser = route.matched.some((record) => record.meta.authUser);
+
+      console.log("유저인증 : ", authUser);
+    });
 
     return { resultData, splits };
   },

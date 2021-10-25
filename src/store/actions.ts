@@ -9,6 +9,7 @@ import {
 import { State as rootState } from "@/store/index";
 import { ActionContext } from "vuex";
 
+// body
 export enum BodyActionsTypes {
   acitons_basic = "acitons_basic",
 }
@@ -20,6 +21,7 @@ export type BodyActions = {
   ): void;
 };
 
+// head
 export enum HeadActionsTypes {
   HEAD_ACTIONS_BASIC = "HEAD_ACTIONS_BASIC",
 }
@@ -31,12 +33,13 @@ export type HeadActions = {
   ): void;
 };
 
+// base
 import { IState as baseState } from "@/store/modules/base";
 import { actionsParms as baseActionsParms } from "@/store/modules/base";
 
-// base
 export enum BaseActionsTypes {
   ACTIONS_BASE = "ACTIONS_BASE",
+  PROMISE_TEST = "PROMISE_TEST",
 }
 
 export type BaseActions = {
@@ -44,4 +47,8 @@ export type BaseActions = {
     actionContext: ActionContext<baseState, rootState>,
     paylaod: baseActionsParms
   ): void;
+  [BaseActionsTypes.PROMISE_TEST](
+    actionContext: ActionContext<baseState, rootState>,
+    paylaod: baseActionsParms
+  ): Promise<Boolean>;
 };

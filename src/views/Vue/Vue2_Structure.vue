@@ -4,9 +4,24 @@
     데이터 바인딩
     <p>v-model</p>
     <label for="v-m">v-model 양방향 바인딩</label>
-    <input type="text" name="v-m" v-model="model" /> <br />
+    <input type="text" name="v-m" v-model="model" />
     <span>바인딩 값 :</span>
     {{ model }}
+    <br />
+    <label for="inputType">@input 으로 값할당</label>
+    <input
+      type="text"
+      name="inputType"
+      @input="
+        (e) => {
+          input = e.target.value;
+        }
+      "
+      :value="input"
+    />
+    <span>input 값 :</span>
+    {{ input }}
+    <br />
     <br />
     <span>computed 읽기 값 : </span> {{ cAddModel }} <br />
     <button v-on:click="modelReset">초기화</button>
@@ -79,6 +94,7 @@ export default {
     return {
       model: "a",
       key: "keyValue",
+      input: "",
     };
   },
   computed: {

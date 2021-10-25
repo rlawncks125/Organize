@@ -14,11 +14,17 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, onMounted, ref } from "vue";
 import { useStore } from "../../store/index";
 import { BodyGettersTypes, HeadGettersTypes } from "@/store/getters";
-import { BodyActionsTypes, HeadActionsTypes } from "@/store/actions";
+import {
+  BaseActionsTypes,
+  BodyActionsTypes,
+  HeadActionsTypes,
+} from "@/store/actions";
 import { Body } from "@/store/modules/Body";
+import { BaseMuationsTypes } from "@/store/mutations";
+import { Base } from "@/store/modules/base";
 
 export default defineComponent({
   setup() {
@@ -34,10 +40,28 @@ export default defineComponent({
     const nameUpdate = () => {
       // store.commit(BodyMutationTypes.SET_BODY_NAME, name.value);
       // store.commit(HeadMuationsTypes.SET_HAED_NAME, { name: name.value });
-      store.dispatch(
-        BodyActionsTypes.acitons_basic,
-        new Body().actions({ name: name.value })
+      // store.dispatch(
+      //   BodyActionsTypes.acitons_basic,
+      //   new Body().actions({ name: name.value })
+      // );
+      store.commit(
+        BaseMuationsTypes.MUTATIONS_BASE,
+        new Base().mutations({ name: "sdaw", title: "title" })
       );
+
+      store.dispatch(
+        BaseActionsTypes.ACTIONS_BASE,
+        new Base().actions({ url: "asd" })
+      );
+      store
+        .dispatch(
+          BaseActionsTypes.PROMISE_TEST,
+          new Base().actions({ url: "asdw" })
+        )
+        .then((v) => {
+          console.log(v);
+          console.log(store.state);
+        });
     };
 
     return { bodyUser, name, nameUpdate, HeadName };
