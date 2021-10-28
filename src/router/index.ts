@@ -130,6 +130,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "함수리턴",
     component: () => import("@/views/기타해본거/함수리턴값.vue"),
   },
+  {
+    path: "/axios",
+    name: "axios",
+    component: () => import("@/views/기타해본거/axios.vue"),
+  },
 ];
 
 const router = createRouter({

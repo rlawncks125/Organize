@@ -27,7 +27,8 @@
       기타 :
     </span>
     <router-link to="/팝업">팝업</router-link> |
-    <router-link to="/함수리턴">함수리턴</router-link>
+    <router-link to="/함수리턴">함수리턴</router-link> |
+    <router-link to="/axios">axios</router-link>
   </div>
 
   <p style="text-align: left;">counst stirng : {{ resultData }}</p>

@@ -33,7 +33,9 @@ const mutations: MutationTree<IState> & BaseMutations = {
     state: IState,
     payload: mutationsParms
   ) => {
-    console.log(state, payload);
+    console.log("mutations", state, payload);
+    const { name } = payload;
+    name && (state.name = name);
   },
 };
 
@@ -89,7 +91,7 @@ export interface actionsParms {
   url?: string;
 }
 
-export class Base {
+export class VuexBase {
   mutations(parms: mutationsParms) {
     return parms;
   }

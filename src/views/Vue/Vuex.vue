@@ -24,7 +24,7 @@ import {
 } from "@/store/actions";
 import { Body } from "@/store/modules/Body";
 import { BaseMuationsTypes } from "@/store/mutations";
-import { Base } from "@/store/modules/base";
+import { VuexBase } from "@/store/modules/base";
 
 export default defineComponent({
   setup() {
@@ -46,17 +46,17 @@ export default defineComponent({
       // );
       store.commit(
         BaseMuationsTypes.MUTATIONS_BASE,
-        new Base().mutations({ name: "sdaw", title: "title" })
+        new VuexBase().mutations({ name: name.value, title: "title" })
       );
 
       store.dispatch(
         BaseActionsTypes.ACTIONS_BASE,
-        new Base().actions({ url: "asd" })
+        new VuexBase().actions({ url: "asd" })
       );
       store
         .dispatch(
           BaseActionsTypes.PROMISE_TEST,
-          new Base().actions({ url: "asdw" })
+          new VuexBase().actions({ url: "asdw" })
         )
         .then((v) => {
           console.log(v);

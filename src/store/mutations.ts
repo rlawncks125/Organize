@@ -6,6 +6,16 @@ import {
   IState as HeadState,
   mutationsParms as HaedMutationsParms,
 } from "@/store/modules/Haed";
+import { State as RootState } from "@/store/index";
+
+// Root
+export enum RootMutationsTypes {
+  SET_STATE_TOKEN = "SET_STATE_TOKEN",
+}
+
+export type RootMuations = {
+  [RootMutationsTypes.SET_STATE_TOKEN](state: RootState, token: String): void;
+};
 
 // Body
 export enum BodyMutationTypes {

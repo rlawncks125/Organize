@@ -37,6 +37,12 @@
       <label for="dsc">내용 : </label>
       <input type="text" name="dsc" v-model="dsc" /><br />
       <button @click="add" class="add">ADD</button>
+      <div
+        class="fake-TextArea"
+        contenteditable
+        @click="fakeText"
+        @drop="fakeText"
+      ></div>
     </fieldset>
     <!-- addFrom Open -->
     <div v-else-if="!addBtn">
@@ -95,6 +101,9 @@ export default defineComponent({
       },
       deleteImage: (index: number) => {
         data.files.splice(index, 1);
+      },
+      fakeText: (e: MouseEvent) => {
+        console.log(e.target);
       },
     });
 
@@ -204,5 +213,17 @@ input[type="file"] {
 
 .file-warp-over {
   color: red;
+}
+
+.fake-TextArea {
+  width: 120px;
+  min-width: 120px;
+  min-height: 90px;
+  max-width: 400px;
+  max-height: 300px;
+  padding: 1px;
+  border: 1px solid rgb(169, 169, 169);
+  overflow: hidden;
+  resize: both;
 }
 </style>
