@@ -1,28 +1,15 @@
 import { ref } from "vue";
+import { deviceSize, deviceTypes, getDviceType } from "../common/device";
 
-enum deviceSize {
-  s = 270,
-  ms = 520,
-  md = 700,
-}
-
-enum deviceTypes {
-  s = "s",
-  ms = "ms",
-  md = "md",
-}
 enum Ranges {
   up = "up",
   down = "down",
   breakPoint = "breakPoint",
 }
 
-type optionDiceType = keyof typeof deviceTypes;
-type optionRange = keyof typeof Ranges;
-
 interface options {
-  deviceTypes: optionDiceType;
-  range: optionRange;
+  deviceTypes: keyof typeof deviceTypes;
+  range: keyof typeof Ranges;
 }
 
 const useScroll = () => {
@@ -49,21 +36,9 @@ const useScroll = () => {
           isRange = clientX < deviceSize[options.deviceTypes];
           break;
         case Ranges.breakPoint:
-          switch (options.deviceTypes) {
-            case deviceTypes.s:
-              isRange = 0 < clientX && clientX < deviceSize.s;
-              break;
-            case deviceTypes.ms:
-              isRange = deviceSize.s < clientX && clientX < deviceSize.ms;
-              break;
-            case deviceTypes.md:
-              isRange = deviceSize.ms < clientX && clientX < deviceSize.md;
-              break;
-
-            default:
-              isRange = false;
-              break;
-          }
+          options.deviceTypes === getDviceType()
+            ? (isRange = true)
+            : (isRange = false);
           break;
         default:
           isRange = false;

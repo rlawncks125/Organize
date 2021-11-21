@@ -39,13 +39,13 @@ export default defineComponent({
       });
     };
 
-    onScroll({ deviceTypes: "ms", range: "down" }, (isCheck) => {
+    onScroll({ deviceTypes: "sm", range: "down" }, (isCheck) => {
       console.log("down", isCheck);
     });
-    onScroll({ deviceTypes: "ms", range: "up" }, (isCheck) => {
+    onScroll({ deviceTypes: "sm", range: "up" }, (isCheck) => {
       console.log("up", isCheck);
     });
-    onScroll({ deviceTypes: "ms", range: "breakPoint" }, (isCheck) => {
+    onScroll({ deviceTypes: "sm", range: "breakPoint" }, (isCheck) => {
       console.log("breakPoint", isCheck);
     });
 

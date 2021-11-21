@@ -2,6 +2,9 @@
   <div>
     랜덤 이미지 가져오기
   </div>
+  <p class="size-type"></p>
+  <p class="divce-type"></p>
+  <button @click="putDivceType">디바이스 사이즈</button><br />
   <label for="가로">가로 : </label>
   <input type="number" name="가로" v-model="image.width" /> <br />
   <label for="세로">세로 : </label>
@@ -15,6 +18,7 @@
 </template>
 
 <script lang="ts">
+import { getDviceType } from "@/common/device";
 import axios from "axios";
 import { defineComponent, reactive } from "vue";
 
@@ -37,15 +41,52 @@ export default defineComponent({
           image.isLoading = false;
         });
     };
+    const putDivceType = () => {
+      console.log(getDviceType());
+    };
 
-    return { image, changeImage };
+    return { image, changeImage, putDivceType };
   },
 });
 </script>
 
-<style scoped>
-.da {
-  width: 0;
-  height: 0;
+<style lang="scss">
+@import "../../scss/import/media.scss";
+
+.size-type::before {
+  display: block;
+  content: "기본";
+  @include xs() {
+    content: "xs";
+    width: 40px;
+  }
+  @include sm() {
+    content: "sm";
+  }
+  @include md() {
+    content: "md";
+  }
+  @include lg() {
+    content: "lg";
+  }
+  @include xl() {
+    content: "xl";
+  }
+  @include xxl() {
+    content: "xxl";
+  }
+}
+.divce-type::before {
+  content: "모바일";
+
+  @include tablet() {
+    content: "tablet";
+  }
+  @include laptop() {
+    content: "laptop";
+  }
+  @include desktop() {
+    content: "desktop";
+  }
 }
 </style>
