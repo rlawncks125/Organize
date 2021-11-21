@@ -2,7 +2,7 @@
   <div>리턴값으로 함수호출</div>
   <input type="text" v-model.number="s.setX" />
   <input type="text" v-model.number="s.setY" />
-  <button @click="click">클릭</button>
+  <button @click="onClick">클릭</button>
   <div style="height:15rem">
     p
   </div>
@@ -24,7 +24,7 @@ import { defineComponent, reactive, toRefs } from "vue";
 export default defineComponent({
   setup() {
     const { x: funX, y: funY, Func } = functionReturn();
-    const { pointY: pointY, Scroll } = useScroll();
+    const { pointY: pointY, onScroll } = useScroll();
     const data = reactive({
       s: {
         setX: funX,
@@ -33,23 +33,23 @@ export default defineComponent({
     });
     pointY.value = 200;
 
-    const click = () => {
+    const onClick = () => {
       Func((sum, avg, { a, b }) => {
         console.log(`sum : ${sum}, avg : ${avg} , a : ${a}, b : ${b}`);
       });
     };
 
-    Scroll({ deviceTypes: "ms", range: "down" }, (check) => {
-      console.log("down", check);
+    onScroll({ deviceTypes: "ms", range: "down" }, (isCheck) => {
+      console.log("down", isCheck);
     });
-    Scroll({ deviceTypes: "ms", range: "up" }, (check) => {
-      console.log("up", check);
+    onScroll({ deviceTypes: "ms", range: "up" }, (isCheck) => {
+      console.log("up", isCheck);
     });
-    Scroll({ deviceTypes: "ms", range: "breakPoint" }, (check) => {
-      console.log("breakPoint", check);
+    onScroll({ deviceTypes: "ms", range: "breakPoint" }, (isCheck) => {
+      console.log("breakPoint", isCheck);
     });
 
-    return { ...toRefs(data), click };
+    return { ...toRefs(data), onClick };
   },
 });
 
@@ -65,10 +65,10 @@ const functionReturn = () => {
   }
 
   type CallFunction = (sum: number, avg: number, Icall: ICallParms) => void;
-  type IFunc = {
+  type FuncType = {
     (callFunc: CallFunction): void;
   };
-  const Func: IFunc = (callFunc: CallFunction) => {
+  const Func: FuncType = (callFunc: CallFunction) => {
     const sum = data.x + data.y;
     const avg = data.x / data.y;
     callFunc(sum, avg, { a: sum, b: avg });

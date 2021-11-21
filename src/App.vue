@@ -29,6 +29,7 @@
     <router-link to="/팝업">팝업</router-link> |
     <router-link to="/함수리턴">함수리턴</router-link> |
     <router-link to="/axios">axios</router-link>
+    <router-link to="/RandImage">RandImage</router-link>
   </div>
 
   <p style="text-align: left;">counst stirng : {{ resultData }}</p>
@@ -80,6 +81,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Estonia&display=swap");
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif, Georgia, serif;
   -webkit-font-smoothing: antialiased;
@@ -102,6 +104,7 @@ export default defineComponent({
 
 /* 문자 애니메이션 */
 .list-item {
+  font-family: "Estonia", cursive;
   display: inline-block;
   margin-right: 4px;
 }

@@ -10,18 +10,19 @@ export const AuthHeaders: AxiosRequestConfig = {
   timeout: 500,
 };
 
-export const logIn = async (
-  username: string,
-  password: string
-): Promise<LoginOutPutDto> => {
+interface IBasicAuth {
+  username: string;
+  password: string;
+}
+
+export const logIn = async (auth: IBasicAuth): Promise<LoginOutPutDto> => {
   return axios
-    .get("api/user", {
-      auth: { username, password },
-    })
+    .get("api/user", { auth })
     .then((res: any) => {
       const result: LoginOutPutDto = res.data;
       const { ok, token, err } = result;
-      console.log(err);
+
+      // 토큰 vuex에 저장 처리
       if (ok) {
         token && setToken(token);
       } else {

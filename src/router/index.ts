@@ -135,6 +135,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "axios",
     component: () => import("@/views/기타해본거/axios.vue"),
   },
+  {
+    path: "/RandImage",
+    name: "RandImage",
+    component: () => import("@/views/기타해본거/RandImage.vue"),
+  },
 ];
 
 const router = createRouter({
