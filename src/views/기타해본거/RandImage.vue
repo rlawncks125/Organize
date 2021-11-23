@@ -51,8 +51,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import "../../scss/import/media.scss";
-
 .size-type::before {
   display: block;
   content: "기본";
@@ -62,6 +60,7 @@ export default defineComponent({
   }
   @include sm() {
     content: "sm";
+    color: $color1;
   }
   @include md() {
     content: "md";

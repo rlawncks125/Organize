@@ -1,6 +1,6 @@
 import { store } from "@/store";
 import { RootMutationsTypes } from "@/store/mutations";
-import { LoginOutPutDto } from "@/swagger";
+import { LoginOutPutDto } from "@/assets/swagger";
 import axios, { AxiosRequestConfig } from "axios";
 
 export const AuthHeaders: AxiosRequestConfig = {

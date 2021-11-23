@@ -140,6 +140,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "RandImage",
     component: () => import("@/views/기타해본거/RandImage.vue"),
   },
+  {
+    path: "/Chat",
+    name: "Chat",
+    component: () => import("@/views/기타해본거/Chat.vue"),
+  },
 ];
 
 const router = createRouter({

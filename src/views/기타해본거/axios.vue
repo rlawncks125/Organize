@@ -34,7 +34,15 @@
   <button @click="state">token</button>
   <br />
   <button @click="wsCon">ws푸쉬</button>
-  <div></div>
+  <br />
+  <label for="roomName">Room Name :</label>
+  <input
+    type="text"
+    name="roomName"
+    :value="rommName"
+    @input="(e) => (rommName = e.target.value)"
+  />
+  <button @click="createRoom">방만들기</button>
 </template>
 
 <script lang="ts">
@@ -50,7 +58,8 @@ import {
   watch,
 } from "vue";
 
-import { io, Socket } from "socket.io-client";
+import { io } from "socket.io-client";
+import { CreateRoomDtoInput, CreateRoomDtoOutPut } from "@/assets/swagger";
 
 export default defineComponent({
   setup() {
@@ -61,6 +70,7 @@ export default defineComponent({
         id: "",
         password: "",
       },
+      rommName: "",
       login: async () => {
         const { ok, user } = await logIn({
           username: data.form.id,
@@ -99,11 +109,19 @@ export default defineComponent({
           data: "이거나먹어라",
         });
       },
+      createRoom: () => {
+        const sendData: CreateRoomDtoInput = {
+          room: data.rommName,
+          position: { x: 2, y: 3 },
+        };
+
+        socket.emit("createRoom", sendData);
+      },
     });
 
     // const socket: WebSocket = new WebSocket(`ws://localhost:3000`);
 
-    let socket = io("ws://localhost:3000", {
+    let socket = io("ws://localhost:3000/chat", {
       transports: ["websocket"],
       auth: {
         token: data.token,
@@ -121,7 +139,7 @@ export default defineComponent({
       () => {
         if (data.token) {
           socket.close();
-          socket = io("ws://localhost:3000", {
+          socket = io("ws://localhost:3000/chat", {
             transports: ["websocket"],
             auth: {
               token: data.token,
@@ -144,6 +162,9 @@ export default defineComponent({
     });
     socket.on("error", (data) => {
       console.log(`error : ${data}`);
+    });
+    socket.on("createRoom", (data: CreateRoomDtoOutPut) => {
+      console.log(data);
     });
 
     onUnmounted(() => {
