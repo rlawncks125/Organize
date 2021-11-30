@@ -23,7 +23,6 @@
   </div>
   <button @click="socket.close">나가기</button>
   <button @click="socket.reJoin">다시참여</button>
-  <button @click="myRooms">내방들</button>
   <div class="chat-warp">
     <p v-for="chat in stayRoomChat" :key="chat.id" :class="chat.type">
       {{ chat.message }}
@@ -60,6 +59,7 @@ import {
 export default defineComponent({
   setup() {
     const socket = useSocketChat("chat");
+    socket.connection();
     const data = reactive({
       roomName: "",
       stayRoom: "",
@@ -100,6 +100,8 @@ export default defineComponent({
     socket.socket.on("update", (res) => {
       const { type, message, room } = res;
       //   console.log(res);
+      // 이미 chatList에 기준 방 데이터가 있을시
+      // 데이터 업데이트
       if (data.chatList.find((v) => v.room === room)) {
         data.chatList = data.chatList.map((v) => {
           if (v.room === room) {
@@ -121,12 +123,9 @@ export default defineComponent({
     };
 
     const messagePush = () => {
-      //  chatMessage 유효성 검사
+      //  chateMssage 유효성 검사
       if (data.chatMessage.length == 0) return;
-      //   socket.socket.emit("messagePush", {
-      //     stayRoom: data.stayRoom,
-      //     message: data.chatMessage,
-      //   });
+
       socket.messagePush(data.stayRoom, data.chatMessage);
       data.chatMessage = "";
     };
@@ -158,15 +157,21 @@ export default defineComponent({
 });
 
 const useSocketChat = (namespace: string) => {
+  // const wsUrl = "ws://localhost:3030";
+  const wsUrl = "wss://myapi.kimjuchan97.site";
   const store = useStore();
   const token = computed(() => store.state.token);
-  let socket = io(`ws://localhost:3000/${namespace}`, {
+  const socket = io(`${wsUrl}/${namespace}`, {
+    autoConnect: false,
     transports: ["websocket"],
     auth: {
       //   토큰
       token: token.value,
     },
   });
+  const connection = () => {
+    socket.connect();
+  };
 
   const createRoom = (roomName: string) => {
     const sendData: CreateRoomDtoInput = {
@@ -192,26 +197,20 @@ const useSocketChat = (namespace: string) => {
       console.log("이미 접속되었습니다.");
       return;
     }
-    console.log("다시 참여했습니다.");
-    socket = io(`ws://localhost:3000/${namespace}`, {
-      transports: ["websocket"],
-      auth: {
-        //   토큰
-        token: token.value,
-      },
-    });
+
+    socket.connect();
   };
   const close = () => {
     socket.close();
+    // socket.disconnect(); // 2중 하나 사용해도 무방한듯
   };
 
   socket.on("connect", () => {
     console.log("연결돼었습니다.");
   });
 
-  socket.on("disconnect", () => {
-    socket.close();
-    console.log("연결 이 끊겼 습니다.");
+  socket.on("disconnect", (res) => {
+    console.log("연결 이 끊겼 습니다.", res);
   });
   socket.on("error", (data) => {
     console.log(`error : ${data}`);
@@ -223,7 +222,6 @@ const useSocketChat = (namespace: string) => {
 
   return {
     socket,
-    // Init,
     createRoom,
     getRoomList,
     joinRoom,
@@ -231,6 +229,7 @@ const useSocketChat = (namespace: string) => {
     close,
     leaveRoom,
     messagePush,
+    connection,
   };
 };
 </script>

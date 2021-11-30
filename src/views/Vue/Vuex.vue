@@ -29,6 +29,7 @@ import { VuexBase } from "@/store/modules/base";
 export default defineComponent({
   setup() {
     const store = useStore();
+
     const bodyUser = computed(
       () => store.getters[BodyGettersTypes.GET_BODY_STATE]
     );
@@ -46,7 +47,11 @@ export default defineComponent({
       // );
       store.commit(
         BaseMuationsTypes.MUTATIONS_BASE,
-        new VuexBase().mutations({ name: name.value, title: "title" })
+        new VuexBase().mutations({
+          name: name.value,
+          title: "title",
+          items: ["xadw", "wwda"],
+        })
       );
 
       store.dispatch(

@@ -145,6 +145,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "Chat",
     component: () => import("@/views/기타해본거/Chat.vue"),
   },
+  {
+    path: "/AOS",
+    name: "AOS",
+    component: () => import("@/views/기타해본거/AOS.vue"),
+  },
 ];
 
 const router = createRouter({

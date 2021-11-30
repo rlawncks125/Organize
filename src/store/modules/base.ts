@@ -13,11 +13,13 @@ import { BaseActions, BaseActionsTypes } from "@/store/actions";
 export interface IState {
   name: string;
   baseT: number;
+  items: string[];
 }
 
 const state: IState = {
   name: "",
   baseT: 0,
+  items: [],
 };
 
 const getters: GetterTree<IState, rootState> & BaseGetters = {
@@ -34,8 +36,11 @@ const mutations: MutationTree<IState> & BaseMutations = {
     payload: mutationsParms
   ) => {
     console.log("mutations", state, payload);
-    const { name } = payload;
+    const { name, items } = payload;
     name && (state.name = name);
+    items && (state.items = [...state.items, ...items]);
+
+    console.log(state.items);
   },
 };
 
@@ -81,6 +86,7 @@ export interface mutationsParms {
   name?: string;
   age?: number;
   title?: string;
+  items?: string[];
 }
 export interface gettersParms {
   name?: string;

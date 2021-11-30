@@ -29,8 +29,9 @@
     <router-link to="/팝업">팝업</router-link> |
     <router-link to="/함수리턴">함수리턴</router-link> |
     <router-link to="/axios">axios</router-link> |
-    <router-link to="/RandImage">RandImage</router-link>
-    <router-link to="/Chat">Chat</router-link>
+    <router-link to="/RandImage">RandImage</router-link> |
+    <router-link to="/Chat">Chat</router-link> |
+    <router-link to="/AOS">AOS</router-link>
   </div>
 
   <p style="text-align: left;">counst stirng : {{ resultData }}</p>
