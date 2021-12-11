@@ -6,7 +6,7 @@ import {
   IState as HeadState,
   mutationsParms as HaedMutationsParms,
 } from "@/store/modules/Haed";
-import { State as RootState } from "@/store/index";
+import { State as RootState, State } from "@/store/index";
 
 // Root
 export enum RootMutationsTypes {
@@ -49,6 +49,7 @@ export type HeadMutations = {
 // base
 import { IState as baseState } from "@/store/modules/base";
 import { mutationsParms as baseMuationsParms } from "@/store/modules/base";
+import { MutationTree } from "vuex";
 
 export enum BaseMuationsTypes {
   MUTATIONS_BASE = "MUTATIONS_BASE",
@@ -60,3 +61,16 @@ export type BaseMutations = {
     payload: baseMuationsParms
   ): void;
 };
+
+// TypeTest
+export type MutationType<T, U, V> = {
+  [K in keyof (U | V)]: (state: T, payload: U[K]) => V[K];
+};
+export interface TestMutationPayloadMaps {
+  MuationTestType: { name: string; age: number };
+  TESTCHECK: { test: string; price: number };
+}
+export interface TestMutationReturnMaps {
+  MuationTestType: number;
+  TESTCHECK: void;
+}

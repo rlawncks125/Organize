@@ -35,3 +35,15 @@ export type BaseGetters = {
     state: baseState
   ): (parms: baseGettersParms) => void;
 };
+
+// TypeTest
+export type GettersType<T, U, V> = {
+  [K in keyof (U | V)]: (state: T) => (payload: U[K]) => V[K];
+};
+
+export interface TestGettersParmsMaps {
+  testGetters: { name: string };
+}
+export interface TestGettersReturnMaps {
+  testGetters: string;
+}

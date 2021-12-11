@@ -11,11 +11,13 @@
   age : {{ bodyUser.age }}
   <br />
   HeadName : {{ HeadName }}
+  <br />
+  typeTestName : {{ typeTestName }}
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref } from "vue";
-import { useStore } from "../../store/index";
+import { useStore, useTypeStore } from "../../store/index";
 import { BodyGettersTypes, HeadGettersTypes } from "@/store/getters";
 import {
   BaseActionsTypes,
@@ -29,12 +31,18 @@ import { VuexBase } from "@/store/modules/base";
 export default defineComponent({
   setup() {
     const store = useStore();
+    const typeStore = useTypeStore();
+    typeStore.commit("TESTCHECK", { test: "test", price: 21 });
+    typeStore.dispatch("ActionTestType", { name: "adw", age: 214 });
 
     const bodyUser = computed(
       () => store.getters[BodyGettersTypes.GET_BODY_STATE]
     );
     const HeadName = computed(() =>
       store.getters[HeadGettersTypes.GET_NAME_ADD_PARMS]("조조")
+    );
+    const typeTestName = computed(() =>
+      typeStore.getters["testGetters"]({ name: "-typeTest" })
     );
     const name = ref<string>();
 
@@ -53,7 +61,6 @@ export default defineComponent({
           items: ["xadw", "wwda"],
         })
       );
-
       store.dispatch(
         BaseActionsTypes.ACTIONS_BASE,
         new VuexBase().actions({ url: "asd" })
@@ -67,9 +74,10 @@ export default defineComponent({
           console.log(v);
           console.log(store.state);
         });
+      typeStore.commit("TESTCHECK", { test: name.value!, price: 12 });
     };
 
-    return { bodyUser, name, nameUpdate, HeadName };
+    return { bodyUser, name, nameUpdate, HeadName, typeTestName };
   },
 });
 </script>

@@ -4,15 +4,16 @@ let ds = {
   ssa: "sww",
 };
 
-// { ssa: 'sww' }
 console.log(ds);
+// { ssa: 'sww' }
 
 const addtest = "add";
 
 ds[addtest] = "sas";
 
-// { ssa: 'sww', add: 'sas' }
 console.log(ds);
+// { ssa: 'sww', add: 'sas' }
+
 
 const addValue = "valeee";
 const Key = "keyKK";
@@ -20,8 +21,8 @@ const newAdd = { [Key]: addValue };
 
 ds = { ...ds, ...newAdd };
 
-// { ssa: 'sww', add: 'sas', keyKK: 'valeee' }
 console.log(ds);
+// { ssa: 'sww', add: 'sas', keyKK: 'valeee' }
 
 // ----------------  출력
 console.log(ds.ssa);
