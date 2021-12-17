@@ -49,7 +49,6 @@ export type HeadMutations = {
 // base
 import { IState as baseState } from "@/store/modules/base";
 import { mutationsParms as baseMuationsParms } from "@/store/modules/base";
-import { MutationTree } from "vuex";
 
 export enum BaseMuationsTypes {
   MUTATIONS_BASE = "MUTATIONS_BASE",

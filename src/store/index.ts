@@ -83,6 +83,7 @@ type StoreType = Omit<Store<State>, "getters" | "commit" | "dispatch"> & {
     [K in keyof GettersTypes]: ReturnType<GettersTypes[K]>;
   };
 };
+
 export function useTypeStore(): StoreType {
   return baseUseStore(key);
 }

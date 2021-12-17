@@ -9,6 +9,7 @@ import {
 import { State as rootState } from "@/store/index";
 import { ActionContext, ActionTree } from "vuex";
 
+
 // body
 export enum BodyActionsTypes {
   acitons_basic = "acitons_basic",
@@ -54,18 +55,10 @@ export type BaseActions = {
 };
 
 // TypeTest
-import { testMutationType } from "./modules/TypeTest";
 
 export type ActionType<T, U, V, X> = {
   [K in keyof (U | V)]: (actionContext: X, payload: U[K]) => V[K];
 };
-
-export type testActionContext<T> = {
-  commit<K extends keyof testMutationType>(
-    key: K,
-    payload: Parameters<testMutationType[K]>[1]
-  ): ReturnType<testMutationType[K]>;
-} & Omit<ActionContext<T, rootState>, "commit">;
 
 export interface TestActionPayloadMaps {
   ActionTestType: { name: string; age: number };

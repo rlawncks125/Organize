@@ -43,7 +43,9 @@ export type GettersType<T, U, V> = {
 
 export interface TestGettersParmsMaps {
   testGetters: { name: string };
+  testGetName: void;
 }
 export interface TestGettersReturnMaps {
   testGetters: string;
+  testGetName: string;
 }

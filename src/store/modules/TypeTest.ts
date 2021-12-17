@@ -1,7 +1,12 @@
-import { ActionTree, GetterTree, Module, MutationTree } from "vuex";
+import {
+  ActionContext,
+  ActionTree,
+  GetterTree,
+  Module,
+  MutationTree,
+} from "vuex";
 import {
   ActionType,
-  testActionContext,
   TestActionPayloadMaps,
   TestActionReturnMaps,
 } from "../actions";
@@ -29,9 +34,12 @@ const getters: GetterTree<IState, rootState> & testGettersTYpe = {
   testGetters: (state) => ({ name }) => {
     return state.name + name;
   },
+  testGetName: (state) => () => {
+    return "sdw";
+  },
 };
 
-export const mutations: MutationTree<IState> & testMutationType = {
+const mutations: MutationTree<IState> & testMutationType = {
   MuationTestType: (state, { name, age }) => {
     console.log(name, age);
     return 0;
@@ -47,7 +55,7 @@ const actions: ActionTree<IState, rootState> & testActionsType = {
     console.log(name, age);
     return 0;
   },
-  TwoTwo: ({ commit }, num: number) => {},
+  TwoTwo: ({ commit }, num) => {},
 };
 
 export const module: Module<IState, rootState> = {
@@ -60,6 +68,7 @@ export const module: Module<IState, rootState> = {
   actions,
   modules: {},
 };
+
 export type testGettersTYpe = GettersType<
   IState,
   TestGettersParmsMaps,
@@ -72,9 +81,16 @@ export type testMutationType = MutationType<
   TestMutationReturnMaps
 >;
 
+type myActionContext = {
+  commit<K extends keyof testMutationType>(
+    key: K,
+    payload: Parameters<testMutationType[K]>[1]
+  ): ReturnType<testMutationType[K]>;
+} & Omit<ActionContext<IState, rootState>, "commit">;
+
 export type testActionsType = ActionType<
   IState, //
   TestActionPayloadMaps,
   TestActionReturnMaps,
-  testActionContext<IState>
+  myActionContext
 >;

@@ -1,1 +1,1 @@
-console.log("dadadadwada");
+"use strict";

@@ -74,6 +74,7 @@ export default defineComponent({
           console.log(v);
           console.log(store.state);
         });
+
       typeStore.commit("TESTCHECK", { test: name.value!, price: 12 });
     };
 
