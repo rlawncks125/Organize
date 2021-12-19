@@ -9,7 +9,6 @@ import {
 import { State as rootState } from "@/store/index";
 import { ActionContext, ActionTree } from "vuex";
 
-
 // body
 export enum BodyActionsTypes {
   acitons_basic = "acitons_basic",
@@ -56,8 +55,8 @@ export type BaseActions = {
 
 // TypeTest
 
-export type ActionType<T, U, V, X> = {
-  [K in keyof (U | V)]: (actionContext: X, payload: U[K]) => V[K];
+export type ActionType<T, U, V> = {
+  [K in keyof (U | V)]: (actionContext: T, payload: U[K]) => V[K];
 };
 
 export interface TestActionPayloadMaps {

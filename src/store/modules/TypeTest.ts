@@ -30,7 +30,7 @@ const state: IState = {
   name: "",
 };
 
-const getters: GetterTree<IState, rootState> & testGettersTYpe = {
+const getters: GetterTree<IState, rootState> & GettersTypes = {
   testGetters: (state) => ({ name }) => {
     return state.name + name;
   },
@@ -39,7 +39,7 @@ const getters: GetterTree<IState, rootState> & testGettersTYpe = {
   },
 };
 
-const mutations: MutationTree<IState> & testMutationType = {
+const mutations: MutationTree<IState> & MutationTypes = {
   MuationTestType: (state, { name, age }) => {
     console.log(name, age);
     return 0;
@@ -50,7 +50,7 @@ const mutations: MutationTree<IState> & testMutationType = {
   },
 };
 
-const actions: ActionTree<IState, rootState> & testActionsType = {
+const actions: ActionTree<IState, rootState> & ActionsTypes = {
   ActionTestType: ({ commit }, { name, age }) => {
     console.log(name, age);
     return 0;
@@ -69,28 +69,27 @@ export const module: Module<IState, rootState> = {
   modules: {},
 };
 
-export type testGettersTYpe = GettersType<
+export type GettersTypes = GettersType<
   IState,
   TestGettersParmsMaps,
   TestGettersReturnMaps
 >;
 
-export type testMutationType = MutationType<
+export type MutationTypes = MutationType<
   IState, //
   TestMutationPayloadMaps,
   TestMutationReturnMaps
 >;
 
 type myActionContext = {
-  commit<K extends keyof testMutationType>(
+  commit<K extends keyof MutationTypes>(
     key: K,
-    payload: Parameters<testMutationType[K]>[1]
-  ): ReturnType<testMutationType[K]>;
+    payload: Parameters<MutationTypes[K]>[1]
+  ): ReturnType<MutationTypes[K]>;
 } & Omit<ActionContext<IState, rootState>, "commit">;
 
-export type testActionsType = ActionType<
-  IState, //
+export type ActionsTypes = ActionType<
+  myActionContext,
   TestActionPayloadMaps,
-  TestActionReturnMaps,
-  myActionContext
+  TestActionReturnMaps
 >;

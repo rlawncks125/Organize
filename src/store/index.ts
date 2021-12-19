@@ -53,15 +53,21 @@ export function useStore(): Store<State> {
 
 export const useStoreState = () => useStore().state;
 
+export function useTypeStore(): StoreType {
+  const store: StoreType = baseUseStore(key);
+
+  return baseUseStore(key);
+}
+
 import {
-  testMutationType,
-  testGettersTYpe,
-  testActionsType,
+  MutationTypes as testMutationsTypes,
+  GettersTypes as testGettersTypes,
+  ActionsTypes as testActionsTypes,
 } from "./modules/TypeTest";
 
-type MutationsTypes = testMutationType;
-type ActionsTypes = testActionsType;
-type GettersTypes = testGettersTYpe;
+type MutationsTypes = testMutationsTypes;
+type ActionsTypes = testActionsTypes;
+type GettersTypes = testGettersTypes;
 
 type StoreType = Omit<Store<State>, "getters" | "commit" | "dispatch"> & {
   commit<
@@ -83,7 +89,3 @@ type StoreType = Omit<Store<State>, "getters" | "commit" | "dispatch"> & {
     [K in keyof GettersTypes]: ReturnType<GettersTypes[K]>;
   };
 };
-
-export function useTypeStore(): StoreType {
-  return baseUseStore(key);
-}
