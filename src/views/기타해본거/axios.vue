@@ -59,7 +59,6 @@ import {
 } from "vue";
 
 import { io } from "socket.io-client";
-import { CreateRoomDtoInput, CreateRoomDtoOutPut } from "@/assets/swagger";
 
 export default defineComponent({
   setup() {
@@ -110,7 +109,7 @@ export default defineComponent({
         });
       },
       createRoom: () => {
-        const sendData: CreateRoomDtoInput = {
+        const sendData = {
           room: data.rommName,
           position: { x: 2, y: 3 },
         };
@@ -163,7 +162,7 @@ export default defineComponent({
     socket.on("error", (data) => {
       console.log(`error : ${data}`);
     });
-    socket.on("createRoom", (data: CreateRoomDtoOutPut) => {
+    socket.on("createRoom", (data) => {
       console.log(data);
     });
 

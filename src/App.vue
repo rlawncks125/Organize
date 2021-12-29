@@ -1,5 +1,5 @@
 <template>
-  <div id="nav">
+  <div id="nav" v-color-change="'red'">
     <p>공부 하자 !!!!!!!</p>
     <span style="font-weight: bold; color : blue">
       VUE :
@@ -49,7 +49,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, watch } from "@vue/runtime-core";
+import { computed, defineComponent, onMounted, watch } from "@vue/runtime-core";
 import { useRoute } from "vue-router";
 import { countString } from "./components/countString";
 

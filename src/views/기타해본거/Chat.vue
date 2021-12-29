@@ -44,7 +44,6 @@
 </template>
 
 <script lang="ts">
-import { CreateRoomDtoInput, CreateRoomDtoOutPut } from "@/assets/swagger";
 import { useStore } from "@/store/index";
 import { io } from "socket.io-client";
 import {
@@ -92,7 +91,7 @@ export default defineComponent({
         });
     });
 
-    socket.socket.on("createRoom", (data: CreateRoomDtoOutPut) => {
+    socket.socket.on("createRoom", (data) => {
       console.log(data);
       joninRoom(data.room);
     });
@@ -174,7 +173,7 @@ const useSocketChat = (namespace: string) => {
   };
 
   const createRoom = (roomName: string) => {
-    const sendData: CreateRoomDtoInput = {
+    const sendData = {
       room: roomName,
       position: { x: 1, y: 1 },
     };

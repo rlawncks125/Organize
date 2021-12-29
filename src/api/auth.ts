@@ -1,6 +1,14 @@
 import { store } from "@/store";
 import { RootMutationsTypes } from "@/store/mutations";
-import { LoginOutPutDto } from "@/assets/swagger";
+import {
+  CreateRestaurantInputDto,
+  CreateRoomInputDto,
+  EnumEventTriggerTypes,
+  JoinRoomInputDto,
+  JoinRoomOutPutDto,
+  LoginOutPutDto,
+  UserService,
+} from "@/assets/swagger";
 import axios, { AxiosRequestConfig } from "axios";
 
 export const AuthHeaders: AxiosRequestConfig = {
@@ -57,3 +65,5 @@ const restToken = () => {
   AuthHeaders.headers.acces_token = "";
   store.commit(RootMutationsTypes.SET_STATE_TOKEN, " ");
 };
+
+const triger = EnumEventTriggerTypes.LEAVEROOM;

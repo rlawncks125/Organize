@@ -1,6 +1,6 @@
 const { codegen } = require("swagger-axios-codegen");
 
-const url = "http://localhost:3000";
+const url = "http://localhost:3030";
 
 codegen({
   methodNameMode: "operationId",
