@@ -8,6 +8,7 @@
     <router-link to="/common">common</router-link> |
     <router-link to="/vue2">Vue2</router-link> |
     <router-link to="/vue3">Vue3</router-link> |
+    <router-link to="/디렉티브">디렉티브</router-link> |
     <router-link to="/TA">TA</router-link> |
     <router-link to="/vuex">vuex</router-link>
     <br />

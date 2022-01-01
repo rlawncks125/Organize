@@ -26,6 +26,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/Vue/Vue3_Composition.vue"),
   },
   {
+    path: "/디렉티브",
+    name: "디렉티브",
+    component: () => import("../views/Vue/디렉티브.vue"),
+  },
+  {
     path: "/common",
     name: "common",
     component: () => import("../views/Vue/Vue_Common.vue"),
