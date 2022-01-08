@@ -45,6 +45,7 @@
       </span>
     </transition-group>
   </div>
+  <start-compo />
 
   <router-view />
 </template>
@@ -53,8 +54,10 @@
 import { computed, defineComponent, onMounted, watch } from "@vue/runtime-core";
 import { useRoute } from "vue-router";
 import { countString } from "./components/countString";
+import StartCompo from "@/components/별점구현.vue";
 
 export default defineComponent({
+  components: { StartCompo },
   setup() {
     const data = [
       "나는 초보자 FrontEnd 입니다.",
