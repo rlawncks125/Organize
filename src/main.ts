@@ -28,8 +28,12 @@ createApp(App)
   .directive("color-change", {
     // 사용 <tag v-color-change='binding.value' />
     beforeMount(el, binding, vnode) {
-      const random = Math.floor(Math.random() * 900000) + 100000;
-      el.style.backgroundColor = `#${random}`;
+      if (binding.value) {
+        el.style.backgroundColor = binding.value;
+      } else {
+        const random = Math.floor(Math.random() * 900000) + 100000;
+        el.style.backgroundColor = `#${random}`;
+      }
     },
   }) // 커스텀 디렉티브
   .mount("#app");

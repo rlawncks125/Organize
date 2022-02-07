@@ -1,5 +1,5 @@
 <template>
-  <div id="nav" v-color-change="'red'">
+  <div id="nav" v-color-change>
     <p>공부 하자 !!!!!!!</p>
     <span style="font-weight: bold; color : blue">
       VUE :
@@ -45,7 +45,11 @@
       </span>
     </transition-group>
   </div>
-  <start-compo />
+  <!-- 별점 구현 컴포 -->
+  <!-- <start-compo /> -->
+
+  <!-- IntersectionObserver -->
+  <intersection-observer />
 
   <router-view />
 </template>
@@ -55,9 +59,10 @@ import { computed, defineComponent, onMounted, watch } from "@vue/runtime-core";
 import { useRoute } from "vue-router";
 import { countString } from "./components/countString";
 import StartCompo from "@/components/별점구현.vue";
+import IntersectionObserver from "@/views/기타해본거/IntersectionObserver.vue";
 
 export default defineComponent({
-  components: { StartCompo },
+  components: { StartCompo, IntersectionObserver },
   setup() {
     const data = [
       "나는 초보자 FrontEnd 입니다.",
