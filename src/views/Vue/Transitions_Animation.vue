@@ -14,7 +14,7 @@
   <div style="border : 1px solid black">
     <h2 style="border-bottom : 1px solid black">전환 클래스</h2>
     <p>
-      v-enter-form :입력 시작 상태 ( 0% )
+      v-enter-from :입력 시작 상태 ( 0% )
     </p>
     <p>
       v-enter-active :입력 활성화 상태 ( 0% ~ 50% )
