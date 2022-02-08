@@ -39,7 +39,7 @@
 
   <!-- 문자 애니메이션 -->
   <div style="height:30px">
-    <transition-group name="list" tag="p">
+    <transition-group name="list" tag="div">
       <span v-for="item in splits" :key="item" class="list-item">
         {{ item }}
       </span>
@@ -49,7 +49,15 @@
   <!-- <start-compo /> -->
 
   <!-- IntersectionObserver -->
-  <intersection-observer />
+  <!-- <intersection-observer /> -->
+  <!-- fa-solid fa-user-secret -->
+
+  <!-- vue font awesome -->
+  <!-- https://fontawesome.com/docs/web/use-with/vue/style -->
+  <h1>
+    <font-awesome-icon :icon="['fa', 'user-secret']" />
+    <font-awesome-icon :icon="['fa', 'coffee']" spin />
+  </h1>
 
   <router-view />
 </template>
