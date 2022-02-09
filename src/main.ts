@@ -11,16 +11,7 @@ import "aos/dist/aos.css";
 // provide key(Symbol)를 이용한 provide 정의
 export const providekey: InjectionKey<string> = Symbol();
 
-// vue Font awesome
-// https://fontawesome.com/docs/web/use-with/vue/style
-import { library } from "@fortawesome/fontawesome-svg-core";
-
-import { faUserSecret, faCoffee } from "@fortawesome/free-solid-svg-icons";
-
-//  npm i --save @fortawesome/vue-fontawesome@prerelease
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-library.add(faUserSecret, faCoffee);
+import { FontAwesomeIcon } from "@/plugins/font-awesome";
 
 createApp(App)
   .use(store, key)
