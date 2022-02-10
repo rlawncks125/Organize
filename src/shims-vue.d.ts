@@ -9,3 +9,11 @@ declare module 'vue3-markdown-it'
 declare module 'marked'
 
 
+declare module "*.jpg" {
+  const value: any;
+  export default value;
+}
+declare module "*.png" {
+  const value: any;
+  export default value;
+}

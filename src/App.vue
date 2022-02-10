@@ -54,10 +54,12 @@
 
   <!-- vue font awesome -->
   <!-- https://fontawesome.com/docs/web/use-with/vue/style -->
-  <h1>
+  <!-- <h1>
     <font-awesome-icon :icon="['fa', 'user-secret']" />
     <font-awesome-icon :icon="['fa', 'coffee']" spin />
-  </h1>
+  </h1> -->
+
+  <image-path />
 
   <router-view />
 </template>
@@ -68,9 +70,10 @@ import { useRoute } from "vue-router";
 import { countString } from "./components/countString";
 import StartCompo from "@/components/별점구현.vue";
 import IntersectionObserver from "@/views/기타해본거/IntersectionObserver.vue";
+import ImagePath from "@/views/Vue/Image경로.vue";
 
 export default defineComponent({
-  components: { StartCompo, IntersectionObserver },
+  components: { StartCompo, IntersectionObserver, ImagePath },
   setup() {
     const data = [
       "나는 초보자 FrontEnd 입니다.",
