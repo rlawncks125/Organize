@@ -50,7 +50,6 @@
 
   <!-- IntersectionObserver -->
   <!-- <intersection-observer /> -->
-  <!-- fa-solid fa-user-secret -->
 
   <!-- vue font awesome -->
   <!-- https://fontawesome.com/docs/web/use-with/vue/style -->
@@ -59,8 +58,9 @@
     <font-awesome-icon :icon="['fa', 'coffee']" spin />
   </h1> -->
 
-  <image-path />
+  <!-- <image-path /> -->
 
+  <scroll-percentage />
   <router-view />
 </template>
 
@@ -71,9 +71,10 @@ import { countString } from "./components/countString";
 import StartCompo from "@/components/별점구현.vue";
 import IntersectionObserver from "@/views/기타해본거/IntersectionObserver.vue";
 import ImagePath from "@/views/Vue/Image경로.vue";
+import scrollPercentage from "@/views/기타해본거/scrollPercentage.vue";
 
 export default defineComponent({
-  components: { StartCompo, IntersectionObserver, ImagePath },
+  components: { StartCompo, IntersectionObserver, ImagePath, scrollPercentage },
   setup() {
     const data = [
       "나는 초보자 FrontEnd 입니다.",

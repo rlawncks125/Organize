@@ -27,24 +27,23 @@ export default defineComponent({
     const listsEl = ref<HTMLElement>();
 
     onMounted(() => {
-      // IntersectionObserver
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("active");
-            } else {
-              entry.target.classList.remove("active");
-            }
-            entry.target.innerHTML = entry.isIntersecting + "";
-          });
-        },
-        {
-          root: viewEl.value,
-          rootMargin: "-40px",
-          threshold: 0.2,
-        }
-      );
+      const IntersectEvent = (entries: IntersectionObserverEntry[]) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          } else {
+            entry.target.classList.remove("active");
+          }
+          entry.target.innerHTML =
+            entry.isIntersecting + " | " + entry.intersectionRatio;
+        });
+      };
+
+      const io = new IntersectionObserver(IntersectEvent, {
+        root: viewEl.value,
+        rootMargin: `-40px`,
+        threshold: 0,
+      });
 
       listsEl.value?.childNodes.forEach((el: any) => {
         io.observe(el);
