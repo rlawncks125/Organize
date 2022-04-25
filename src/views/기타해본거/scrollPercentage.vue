@@ -108,7 +108,6 @@ export default defineComponent({
 
           const el = v.target as HTMLElement;
           el.style.backgroundColor = "green";
-          el.style.opacity = `${ratio}`;
 
           switch (el.dataset.cs) {
             case "bg":

@@ -60,7 +60,8 @@
 
   <!-- <image-path /> -->
 
-  <scroll-percentage />
+  <!-- <scroll-percentage /> -->
+
   <router-view />
 </template>
 
@@ -74,7 +75,12 @@ import ImagePath from "@/views/Vue/Image경로.vue";
 import scrollPercentage from "@/views/기타해본거/scrollPercentage.vue";
 
 export default defineComponent({
-  components: { StartCompo, IntersectionObserver, ImagePath, scrollPercentage },
+  components: {
+    StartCompo,
+    IntersectionObserver,
+    ImagePath,
+    scrollPercentage,
+  },
   setup() {
     const data = [
       "나는 초보자 FrontEnd 입니다.",

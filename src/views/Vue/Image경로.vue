@@ -28,11 +28,21 @@
       } <br />
     </p>
   </div>
+  <!-- 그냥 잡 -->
+
+  <div
+    :style="[btnStyle.base, isBtnOver ? btnStyle.hover : {}]"
+    @mouseover="isBtnOver = true"
+    @mouseleave="isBtnOver = false"
+  >
+    <p style="color:white">버튼 이미지로</p>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import catImage from "@/assets/images/고양이.jpg";
+import btnBG from "@/assets/images/pngegg.png";
 
 export default defineComponent({
   setup() {
@@ -42,7 +52,28 @@ export default defineComponent({
       background: `url(${catImage}) center/cover`,
     };
 
-    return { catImage, imageStyle };
+    const isBtnOver = ref<Boolean>(false);
+
+    const btnStyle = {
+      base: {
+        width: "200px",
+        height: "100px",
+
+        background: `url(${btnBG}) center/contain no-repeat`,
+
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        textAlign: "center",
+        margin: "auto",
+        cursor: "pointer",
+      },
+      hover: {
+        transform: "scale(1.05)",
+      },
+    };
+
+    return { catImage, imageStyle, btnStyle, isBtnOver };
   },
 });
 </script>

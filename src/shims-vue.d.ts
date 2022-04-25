@@ -7,7 +7,7 @@ declare module '*.vue' {
 
 declare module 'vue3-markdown-it'
 declare module 'marked'
-
+declare module 'convert-csv-to-json'
 
 declare module "*.jpg" {
   const value: any;
