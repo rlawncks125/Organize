@@ -157,3 +157,21 @@ const funcParent = () => {
 };
 
 funcParent();
+
+// #### this를 이용하여 입력받은 함수 호출 ####
+const internalFuncCall = (funcName, ...arg) => {
+  this.f1 = () => {
+    return "f1 call : " + arg.flat().join(" ");
+  };
+  this.f2 = function() {
+    return "f2 call : " + arg.flat().join(" ");
+  };
+
+  return this[funcName]();
+};
+
+const call_1 = internalFuncCall("f1", "te", "4", "66");
+const call_2 = internalFuncCall("f2", "테사기");
+
+console.log(call_1); // f1 call : te 4 66
+console.log(call_2); // f2 call : 테사기
