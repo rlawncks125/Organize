@@ -7,6 +7,8 @@ const one = {
     return this.data.name; // one , one change
   },
   getNameArrow: () => {
+    // error
+    // html 에선 window 가리킴
     return this.data.name; // Cannot read property 'name' of undefined
   },
 };
@@ -53,7 +55,7 @@ const arrowThis = {
     console.log(this.data.name); // root
 
     function baseFunc() {
-      console.log(this.name); // undefine
+      console.log(this.name); // undefine // baseFunc() 가리킴
       // console.log(this.data.name) // Cannot read property 'name' of undefined
 
       this.funcname = "baseFunc";
@@ -61,7 +63,7 @@ const arrowThis = {
     }
 
     const varFunc = function() {
-      console.log(this.name); // undefine
+      console.log(this.name); // undefine // varFunc() 가리킴
       // console.log(this.data.name) // Cannot read property 'name' of undefined
 
       this.funcname = "varFunc";
@@ -95,16 +97,19 @@ class classThis {
     console.log(this.rootName); // root class
 
     function baseFunc() {
+      console.log(this.name); // root class return name
       console.log(this.rootName); // undefined
       console.log(this.getVar); // undefined
     }
 
     const varFunc = function() {
+      console.log(this.name); // root class return name
       console.log(this.rootName); // undefined
       console.log(this.getVar); // undefined
     };
 
     const arrowFunc = () => {
+      console.log(this.name); // undefined
       console.log(this.rootName); // root class
       console.log(this.getVar); // getVar
     };
@@ -113,7 +118,7 @@ class classThis {
       baseFunc,
       varFunc,
       arrowFunc,
-      name: this.rootName, // root class
+      name: this.rootName + " return name", // root class return name
     };
   }
 
@@ -127,7 +132,7 @@ class classThis {
 }
 const cla = new classThis();
 
-console.log(cla.getName().name); // root class
+console.log(cla.getName().name); // root class return name
 console.log(cla.getArrow()); // root class
 console.log(cla.getVarFunc()); // root class
 
