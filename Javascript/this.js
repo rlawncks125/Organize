@@ -1,3 +1,6 @@
+// function 함수 === const 함수 =  function(){ ... }
+// !== const 함수 = () =>{ ... }
+
 // #### object this 접근  ####
 const one = {
   data: {
