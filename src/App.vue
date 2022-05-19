@@ -62,6 +62,8 @@
 
   <!-- <scroll-percentage /> -->
 
+  <!-- toast ui 테스트 -->
+  <tost-ui />
   <router-view />
 </template>
 
@@ -73,6 +75,7 @@ import StartCompo from "@/components/별점구현.vue";
 import IntersectionObserver from "@/views/기타해본거/IntersectionObserver.vue";
 import ImagePath from "@/views/Vue/Image경로.vue";
 import scrollPercentage from "@/views/기타해본거/scrollPercentage.vue";
+import tostUi from "@/components/toast-ui.vue";
 
 export default defineComponent({
   components: {
@@ -80,6 +83,7 @@ export default defineComponent({
     IntersectionObserver,
     ImagePath,
     scrollPercentage,
+    tostUi,
   },
   setup() {
     const data = [
