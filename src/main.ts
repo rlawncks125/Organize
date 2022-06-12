@@ -13,16 +13,16 @@ export const providekey: InjectionKey<string> = Symbol();
 
 import { FontAwesomeIcon } from "@/plugins/font-awesome";
 
+// aos 사용
+aos.init({
+  delay: 50,
+  duration: 500,
+  anchorPlacement: "bottom-bottom",
+});
+
 createApp(App)
   .use(store, key)
   .use(router)
-  .use(() =>
-    aos.init({
-      delay: 50,
-      duration: 500,
-      anchorPlacement: "bottom-bottom",
-    })
-  ) // aos 사용
   .provide(key, store)
   .provide(providekey, "foo")
   .provide("stringFoo", "stringFoo")
