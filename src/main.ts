@@ -3,22 +3,14 @@ import App from "./App.vue";
 import router from "./router";
 import componentCodeConvert from "./components/codeConvert.vue";
 import { store, key } from "./store";
-// aos ( Animate on scroll libray ) 정의
-import aos from "aos";
-import "aos/dist/aos.css";
+
+// 플러그인
+import { FontAwesomeIcon } from "@/plugins/font-awesome";
+import "@/plugins/aos";
 
 // provide // inject TS
 // provide key(Symbol)를 이용한 provide 정의
 export const providekey: InjectionKey<string> = Symbol();
-
-import { FontAwesomeIcon } from "@/plugins/font-awesome";
-
-// aos 사용
-aos.init({
-  delay: 50,
-  duration: 500,
-  anchorPlacement: "bottom-bottom",
-});
 
 createApp(App)
   .use(store, key)
