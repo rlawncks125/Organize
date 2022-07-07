@@ -53,10 +53,10 @@
 
   <!-- vue font awesome -->
   <!-- https://fontawesome.com/docs/web/use-with/vue/style -->
-  <!-- <h1>
+  <h1>
     <font-awesome-icon :icon="['fa', 'user-secret']" />
     <font-awesome-icon :icon="['fa', 'coffee']" spin />
-  </h1> -->
+  </h1>
 
   <!-- <image-path /> -->
 

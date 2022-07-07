@@ -5,7 +5,7 @@ import componentCodeConvert from "./components/codeConvert.vue";
 import { store, key } from "./store";
 
 // 플러그인
-import { FontAwesomeIcon } from "@/plugins/font-awesome";
+import fontAwesome from "@/plugins/font-awesome";
 import "@/plugins/aos";
 
 // provide // inject TS
@@ -15,11 +15,11 @@ export const providekey: InjectionKey<string> = Symbol();
 createApp(App)
   .use(store, key)
   .use(router)
+  .use(fontAwesome)
   .provide(key, store)
   .provide(providekey, "foo")
   .provide("stringFoo", "stringFoo")
   .component("code-convert", componentCodeConvert)
-  .component("font-awesome-icon", FontAwesomeIcon)
   .directive("color-change", {
     // 사용 <tag v-color-change='binding.value' />
     beforeMount(el, binding, vnode) {

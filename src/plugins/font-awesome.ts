@@ -10,5 +10,10 @@ library.add(faUserSecret, faCoffee);
 
 // fontawesome 컴포넌트
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { Plugin } from "vue";
 
-export { FontAwesomeIcon };
+export default {
+  install: (vue, options) => {
+    vue.component("font-awesome-icon", FontAwesomeIcon);
+  },
+} as Plugin;
