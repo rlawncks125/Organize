@@ -10,7 +10,8 @@
     <router-link to="/vue3">Vue3</router-link> |
     <router-link to="/디렉티브">디렉티브</router-link> |
     <router-link to="/TA">TA</router-link> |
-    <router-link to="/vuex">vuex</router-link>
+    <router-link to="/vuex">vuex</router-link> |
+    <router-link to="/pinia">pinia</router-link>
     <br />
     <span style="font-weight: bold; color : blue">
       HTML :
@@ -53,17 +54,18 @@
 
   <!-- vue font awesome -->
   <!-- https://fontawesome.com/docs/web/use-with/vue/style -->
-  <h1>
+  <!-- <h1>
     <font-awesome-icon :icon="['fa', 'user-secret']" />
     <font-awesome-icon :icon="['fa', 'coffee']" spin />
-  </h1>
+  </h1> -->
 
   <!-- <image-path /> -->
 
   <!-- <scroll-percentage /> -->
 
   <!-- toast ui 테스트 -->
-  <tost-ui />
+  <!-- <tost-ui /> -->
+
   <router-view />
 </template>
 

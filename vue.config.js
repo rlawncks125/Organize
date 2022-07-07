@@ -28,4 +28,16 @@ module.exports = {
   chainWebpack: (config) => {
     config.resolve.alias.set("vue$", "vue/dist/vue.esm-bundler.js");
   },
+  // pinia webpack 4 종속성 업그레이드
+  configureWebpack: {
+    module: {
+      rules: [
+        {
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: "javascript/auto",
+        },
+      ],
+    },
+  },
 };

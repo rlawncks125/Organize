@@ -12,8 +12,13 @@ import "@/plugins/aos";
 // provide key(Symbol)를 이용한 provide 정의
 export const providekey: InjectionKey<string> = Symbol();
 
+// pinia
+import { createPinia } from "pinia";
+const pinia = createPinia();
+
 createApp(App)
   .use(store, key)
+  .use(pinia)
   .use(router)
   .use(fontAwesome)
   .provide(key, store)

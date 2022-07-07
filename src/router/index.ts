@@ -46,6 +46,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/Vue/Vuex.vue"),
   },
   {
+    path: "/pinia",
+    name: "pinia",
+    component: () => import("../views/Vue/pinia.vue"),
+  },
+  {
     path: "/tag",
     name: "tag",
     component: () => import("../views/HTML/Tag.vue"),
