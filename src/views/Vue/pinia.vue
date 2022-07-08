@@ -35,8 +35,11 @@ import { storeToRefs } from "pinia";
 export default defineComponent({
   setup() {
     const counter1 = useCounter();
+
     const counter2 = useCounterCompositionApI();
-    const { count, counter, increment } = storeToRefs(useCounterToRefs());
+
+    const { count, counter } = storeToRefs(useCounterToRefs());
+    const { increment } = useCounterToRefs();
 
     return { counter1, counter2, count, counter, increment };
   },

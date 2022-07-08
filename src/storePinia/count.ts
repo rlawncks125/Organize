@@ -44,5 +44,5 @@ export const useCounterToRefs = defineStore("counter3", () => {
     data.count++;
   };
 
-  return toRefs({ ...toRefs(data), increment, counter });
+  return { ...toRefs(data), increment, counter };
 });
