@@ -22,7 +22,9 @@ export const useCounter = defineStore("counter", {
 export const useCounterCompositionApI = defineStore("counter2", () => {
   const count = ref(0);
 
-  const counter = computed(() => `컴포지션 api 방식 ${count.value} 입니다.`);
+  const counter = computed(
+    () => `컴포지션 api 방식 ref ${count.value} 입니다.`
+  );
 
   const increment = () => {
     count.value++;
@@ -31,13 +33,13 @@ export const useCounterCompositionApI = defineStore("counter2", () => {
   return { count, increment, counter };
 });
 
-export const useCounterToRefs = defineStore("counter3", () => {
+export const useCounterCompositionApi2 = defineStore("counter3", () => {
   const data = reactive({
     count: 0,
   });
 
   const counter = computed(
-    () => `toRefs를 이용한 분해할당  ${data.count} 입니다.`
+    () => `컴포지션 api 방식 reactive ${data.count} 입니다.`
   );
 
   const increment = () => {
