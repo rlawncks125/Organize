@@ -1,5 +1,7 @@
 <template>
-  <div ref="editorRef"></div>
+  <div>
+    <div ref="editorRef"></div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -22,6 +24,14 @@ export default defineComponent({
       });
 
       editorControl.getMarkdown();
+      // 기존 이미지 드랍 기능 제거
+      editorControl.removeHook("addImageBlobHook");
+      editorControl.addHook("addImageBlobHook", (file: File, callback) => {
+        console.log(file);
+
+        // ![arg[2]](arg[1])  === ![설명](이미지Url)
+        callback("image data", "설명?");
+      });
     });
     return { editorRef };
   },

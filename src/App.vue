@@ -64,7 +64,7 @@
   <!-- <scroll-percentage /> -->
 
   <!-- toast ui 테스트 -->
-  <!-- <tost-ui /> -->
+  <tost-ui />
 
   <router-view />
 </template>
