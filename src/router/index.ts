@@ -160,6 +160,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "AOS",
     component: () => import("@/views/기타해본거/AOS.vue"),
   },
+  {
+    path: "/lottie",
+    name: "lottie",
+    component: () => import("@/views/기타해본거/lottie.vue"),
+  },
 ];
 
 const router = createRouter({

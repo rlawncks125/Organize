@@ -33,7 +33,8 @@
     <router-link to="/axios">axios</router-link> |
     <router-link to="/RandImage">RandImage</router-link> |
     <router-link to="/Chat">Chat</router-link> |
-    <router-link to="/AOS">AOS</router-link>
+    <router-link to="/AOS">AOS</router-link> |
+    <router-link to="/lottie">lottie</router-link> |
   </div>
 
   <p style="text-align: left;">counst stirng : {{ resultData }}</p>
@@ -64,10 +65,10 @@
   <!-- <scroll-percentage /> -->
 
   <!-- lottie -->
-  <lottie />
+  <!-- <lottie /> -->
 
   <!-- toast ui 테스트 -->
-  <tost-ui />
+  <!-- <tost-ui /> -->
 
   <router-view />
 </template>
