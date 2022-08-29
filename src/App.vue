@@ -63,6 +63,9 @@
 
   <!-- <scroll-percentage /> -->
 
+  <!-- lottie -->
+  <lottie />
+
   <!-- toast ui 테스트 -->
   <tost-ui />
 
@@ -70,7 +73,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, watch } from "@vue/runtime-core";
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  watch,
+  ref,
+} from "@vue/runtime-core";
 import { useRoute } from "vue-router";
 import { countString } from "./components/countString";
 import StartCompo from "@/components/별점구현.vue";
@@ -79,6 +88,9 @@ import ImagePath from "@/views/Vue/Image경로.vue";
 import scrollPercentage from "@/views/기타해본거/scrollPercentage.vue";
 import tostUi from "@/components/toast-ui.vue";
 
+import { AnimationItem } from "lottie-web";
+import Lottie from "./views/기타해본거/lottie.vue";
+
 export default defineComponent({
   components: {
     StartCompo,
@@ -86,6 +98,7 @@ export default defineComponent({
     ImagePath,
     scrollPercentage,
     tostUi,
+    Lottie,
   },
   setup() {
     const data = [
