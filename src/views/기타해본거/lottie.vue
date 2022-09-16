@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { lottieLoadAnimation } from "@/plugins/lottie";
 import { AnimationItem } from "lottie-web";
-import { onMounted, ref } from "vue";
+import { onActivated, onMounted, ref } from "vue";
 
 const lottieRef = ref<HTMLElement>();
 const lottieRange = ref(0);
