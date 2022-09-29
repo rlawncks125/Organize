@@ -161,6 +161,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/기타해본거/AOS.vue"),
   },
   {
+    path: "/google-font",
+    name: "google-font",
+    component: () => import("@/views/기타해본거/google-font.vue"),
+  },
+  {
     path: "/lottie",
     name: "lottie",
     component: () => import("@/views/기타해본거/lottie.vue"),
