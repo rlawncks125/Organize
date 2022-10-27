@@ -71,6 +71,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/CSS/SCSS.vue"),
   },
   {
+    path: "/scss/each",
+    name: "scss",
+    component: () => import("../views/CSS/each.vue"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("../views/Router/login.vue"),
