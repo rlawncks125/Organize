@@ -1,9 +1,7 @@
 <template>
   <div id="nav" v-color-change>
     <p>공부 하자 !!!!!!!</p>
-    <span style="font-weight: bold; color : blue">
-      VUE :
-    </span>
+    <span style="font-weight: bold; color: blue"> VUE : </span>
     <router-link to="/TypeSCript">TypeSCript</router-link> |
     <router-link to="/common">common</router-link> |
     <router-link to="/vue2">Vue2</router-link> |
@@ -13,19 +11,17 @@
     <router-link to="/vuex">vuex</router-link> |
     <router-link to="/pinia">pinia</router-link>
     <br />
-    <span style="font-weight: bold; color : blue">
-      HTML :
-    </span>
+    <span style="font-weight: bold; color: blue"> HTML : </span>
     <router-link to="/tag">Tag</router-link>
 
-    <span style="font-weight: bold; color : blue; padding-left:10px;">
+    <span style="font-weight: bold; color: blue; padding-left: 10px">
       CSS :
     </span>
     <router-link to="/selector">선택자</router-link> |
     <router-link to="/css">css</router-link> |
     <router-link to="/scss">scss</router-link>
     <br />
-    <span style="font-weight: bold; color : blue; padding-left:10px;">
+    <span style="font-weight: bold; color: blue; padding-left: 10px">
       기타 :
     </span>
     <router-link to="/팝업">팝업</router-link> |
@@ -37,10 +33,10 @@
     <router-link to="/lottie">lottie</router-link> |
   </div>
 
-  <p style="text-align: left;">counst stirng : {{ resultData }}</p>
+  <p style="text-align: left">counst stirng : {{ resultData }}</p>
 
   <!-- 문자 애니메이션 -->
-  <div style="height:30px">
+  <div style="height: 30px">
     <transition-group name="list" tag="div">
       <span v-for="item in splits" :key="item" class="list-item">
         {{ item }}

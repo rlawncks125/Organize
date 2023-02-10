@@ -6,6 +6,7 @@ import { faUserSecret, faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 //  npm i --save @fortawesome/vue-fontawesome@prerelease
 
+// @ts-ignore
 library.add(faUserSecret, faCoffee);
 
 // fontawesome 컴포넌트

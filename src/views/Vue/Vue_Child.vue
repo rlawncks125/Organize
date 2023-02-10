@@ -1,26 +1,19 @@
 <template>
-  <button @click="callBabyfunc">
-    emit 버튼 입니다
-  </button>
+  <button @click="callBabyfunc">emit 버튼 입니다</button>
+
   <button @click="$emit('pool', { name: 'pool 이예요' })">
     $emit 버튼입니다,
   </button>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { onMounted, defineComponent } from "vue";
 
 export default defineComponent({
-  // vue3 Composition 방법
-  // emits: ["baby", "pool"],
-  // 유효성 검하할시
   emits: {
-    // 유효성 검사x
     pool: null,
 
-    // 유효성 검사
-    // 유효성 검사에 실패해도 값은 전달되는거 같음 ( 가드 역할 x)
-    baby: ({ name, age }) => {
+    baby: ({ name, age }: { name: any; age: any }) => {
       if (name && age) {
         return true;
       } else {
