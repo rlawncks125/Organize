@@ -36,12 +36,15 @@ await browser.close();
 // cheerio
 const $ = cheerio.load(content);
 
-$(`section div p`).each((i, element) => {
-  const el = cheerio.load(element);
+// $(`section div p`).each((i, element) => {
+//   const el = cheerio.load(element);
 
-  /** el 데이터 접근 방법 */
-  console.log(el.text());
-  // ==
-  console.log($(element).text());
-  /** */
-});
+//   /** el 데이터 접근 방법 */
+//   console.log(el.text());
+//   // ==
+//   console.log($(element).text());
+//   /** */
+// });
+
+// cypress 로 요소찍어서 하면될거같음
+console.log($(".width-container > :nth-child(1) > p").first().text());
